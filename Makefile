@@ -1,6 +1,11 @@
-CC = 'g++'
-CFLAGS = "I."
-INCLUDEPATH = "C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um"
+Compiler = 'g++' # Compiler to use
+CompilerFlags = "I."
+Include = "C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um"
+Main = 'main.cpp'
 
 compile:
-	$(CC) -Wall -L $(INCLUDEPATH) -o output.exe main.cpp
+	$(Compiler) -Wall -L $(Include) -o output.exe $(Main)
+
+compilerun:
+	$(Compiler) -Wall -L $(Include) -o output.exe $(Main)
+	./output.exe
