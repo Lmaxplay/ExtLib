@@ -19,7 +19,7 @@ try {
     if($O2 -eq 2) {$OOption = '-O2'}
     if($O3 -eq 3) {$OOption = '-O3'}
 
-    g++ $OOption -Wall -L -std=20 $IncludePath -o "output/output.exe" "src/${Main}"
+    g++ -std=c++20 $OOption -Wall -L $IncludePath -o "output/output.exe" "src/${Main}"
 
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it

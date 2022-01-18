@@ -21,5 +21,5 @@ Optimization = '3'
 
 #Compile code
 compile:
-	$(Compiler) -O$(Optimization) -Wall -L $(Include) -o '$(OutputPath)output.exe' '$(SourcePath)$(Main)'
+	$(Compiler) -std=c++20 -O$(Optimization) -Wall -L $(Include) -o '$(OutputPath)output.exe' '$(SourcePath)$(Main)'
 	cp -r ./src/data ./output/
