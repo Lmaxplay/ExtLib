@@ -5,6 +5,27 @@ param(
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um"
 )
 
+function Write-Green {
+    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
+    $Host.UI.RawUI.ForegroundColor = 'Green'
+    Write-Output $args[0] # TODO Update this bit to be more informative
+    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
+}
+
+function Write-Yellow {
+    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
+    $Host.UI.RawUI.ForegroundColor = 'Yellow'
+    Write-Output $args[0] # TODO Update this bit to be more informative
+    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
+}
+
+function Write-Red {
+    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
+    $Host.UI.RawUI.ForegroundColor = 'Red'
+    Write-Output $args[0] # TODO Update this bit to be more informative
+    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
+}
+
 try {
 
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
@@ -19,7 +40,16 @@ try {
     if($O2 -eq 2) {$OOption = '-O2'}
     if($O3 -eq 3) {$OOption = '-O3'}
 
-    g++ -std=c++20 $OOption -Wall -L $IncludePath -o "output/output.exe" "src/${Main}"
+    Write-Yellow 'Running G++ compiler...'
+
+    g++ -m64 -std=c++20 $OOption -Wall -L $IncludePath -o "output/app.exe" "src/*.cpp" "src/lib/*.cpp"
+
+    $CompileOut = $LASTEXITCODE
+    if($CompileOut -ne 0) {
+        Write-Red "G++ exited with error code $CompileOut"
+    } else {
+        Write-Yellow "G++ Compile completed succesfully"
+    }
 
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
