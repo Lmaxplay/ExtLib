@@ -51,6 +51,8 @@ try {
         Write-Yellow "G++ Compile completed succesfully"
     }
 
+    Copy-Item -Force -Recurse './src/data' './output/' 
+
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     Write-Output "An error occured"

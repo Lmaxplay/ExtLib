@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <direct.h>
 #include <fstream>
+#include <string>
 
 #include "lib/getExecutableName.h"
 
@@ -13,9 +14,22 @@ int main() {
     cout << "Hello World!!!\n";
     filesystem::path exePath = filesystem::path(getExecutableName()).parent_path();
     filesystem::path dataPath = exePath;
+    string line;
+    string prgstr = string(dataPath.string() + "\\program.cfg");
+    ifstream myfile(replace(prgstr.begin(), prgstr.end(), '\\', '/'));
+    if (myfile.is_open())
+    {
+        //int index = 0;
+        while ( getline (myfile,line) )
+        {
+            cout << line << '\n';
+            line.find(":");
+        }
+        myfile.close();
+    } else {
+        cout << "Unable to open file\n";
+    }
     dataPath.append("data");
-    std::ifstream ifs(filesystem::path(dataPath).append("program.cfg"));
-    std::string content( (std::istreambuf_iterator<char>(ifs) ), (std::istreambuf_iterator<char>()    ) );
-    std::cout << content;
+    std::cout << (dataPath.string() + "\\program.cfg").compare("D:\\Projects\\CPPProgram\\output\\data\\program.cfg");
     return 0;
 }
