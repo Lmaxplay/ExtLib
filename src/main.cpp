@@ -15,21 +15,12 @@ int main() {
     filesystem::path exePath = filesystem::path(getExecutableName()).parent_path();
     filesystem::path dataPath = exePath;
     string line;
-    string prgstr = string(dataPath.string() + "\\program.cfg");
-    ifstream myfile(replace(prgstr.begin(), prgstr.end(), '\\', '/'));
-    if (myfile.is_open())
-    {
-        //int index = 0;
-        while ( getline (myfile,line) )
-        {
-            cout << line << '\n';
-            line.find(":");
-        }
-        myfile.close();
-    } else {
-        cout << "Unable to open file\n";
-    }
+    string prgstr = string(dataPath.string());
+    char* prgchar = prgstr.data();
+    char* configfile = strcat(prgchar, (char*)"\\data\\program.cfg");
+    FILE* file = fopen(prgchar, "r");
+    // ...buffer contains the entire file...
+
     dataPath.append("data");
-    std::cout << (dataPath.string() + "\\program.cfg").compare("D:\\Projects\\CPPProgram\\output\\data\\program.cfg");
     return 0;
 }
