@@ -6,21 +6,20 @@
 #include <string>
 
 #include "lib/getExecutableName.h"
+#include "lib/vector.hpp"
 
 using namespace std;
 
 
 int main() {
-    cout << "Hello World!!!\n";
-    filesystem::path exePath = filesystem::path(getExecutableName()).parent_path();
-    filesystem::path dataPath = exePath;
-    string line;
-    string prgstr = string(dataPath.string());
-    char* prgchar = prgstr.data();
-    char* configfile = strcat(prgchar, (char*)"\\data\\program.cfg");
-    FILE* file = fopen(prgchar, "r");
-    // ...buffer contains the entire file...
+    vec2i vector = {0, 3};
+    vec2i vector2{};
+    long i = 0;
+    while (i <= 1000000000) {
+        i++;
+        vec2i_copy(vector2, vector);
+    }
+    cout << vector2.x << " " << vector2.y << "\n";
 
-    dataPath.append("data");
     return 0;
 }
