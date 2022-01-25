@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory=$False)][System.String]$Compiler = 'g++',
     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
+    [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
     [Parameter(Mandatory=$False)][System.Byte]$O = 3,
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um"
 )
