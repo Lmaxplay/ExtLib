@@ -1,10 +1,13 @@
 param(
-    [Parameter(Mandatory=$False)][System.String]$Compiler = 'g++',
+    [Parameter(Mandatory=$False)][System.String]$Compiler = 'C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe',
     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
     [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
     [Parameter(Mandatory=$False)][System.Byte]$O = 3,
-    [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um"
+    [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
 )
+
+# MSVC is C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl
+# Clang is C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe
 
 function Write-Green {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
@@ -31,8 +34,7 @@ try {
 
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     $Host.UI.RawUI.ForegroundColor = 'Green'
-    Write-Output 'Lmaxplay CPP build script v0.9.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color
+    Write-Green 'Lmaxplay CPP build script v0.9.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
     
     $OOption = "-O3"
 
@@ -44,22 +46,20 @@ try {
 
     if($Wall -eq 0) {$WallOption = ''}
     if($Wall -eq 1) {$WallOption = '-Wall'}
-    Write-Yellow 'Running G++ compiler...'
+    Write-Yellow 'Running compiler...'
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
-    g++ -m64 -std=c++20 $OOption $WallOption -L $IncludePath -o "output/app.exe" "src/*.cpp" "src/lib/*.cpp"
+    C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed
     Write-Yellow "Compile took $CompileTime"
 
     $CompileOut = $LASTEXITCODE
     if($CompileOut -ne 0) {
-        Write-Red "G++ exited with error code $CompileOut"
+        Write-Red "exited with error code $CompileOut"
     } else {
-        Write-Yellow "G++ Compile completed succesfully"
+        Write-Yellow "Compile completed succesfully"
     }
-
-    Copy-Item -Force -Recurse './src/data' './output/' 
 
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it

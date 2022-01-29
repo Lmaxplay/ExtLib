@@ -19,7 +19,7 @@ int main() {
         i++;
         vec2i_copy(vector2, vector);
     }
-    cout << vector2.x << " " << vector2.y << "\n";
+    cout << vec2i_copy(vector2, vector) << " " << vector2.y << "\n";
 
     return 0;
 }
