@@ -9,30 +9,28 @@ param(
 # MSVC is C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl
 # Clang is C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe
 
+$PreviousColor = 'White'
+$Host.UI.RawUI.ForegroundColor = $PreviousColor
+
 function Write-Green {
-    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     $Host.UI.RawUI.ForegroundColor = 'Green'
     Write-Output $args # TODO Update this bit to be more informative
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Yellow {
-    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     $Host.UI.RawUI.ForegroundColor = 'Yellow'
     Write-Output $args # TODO Update this bit to be more informative
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Red {
-    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     $Host.UI.RawUI.ForegroundColor = 'Red'
     Write-Output $args # TODO Update this bit to be more informative
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 try {
-
-    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     $Host.UI.RawUI.ForegroundColor = 'Green'
     Write-Green 'Lmaxplay CPP build script v0.9.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
     
