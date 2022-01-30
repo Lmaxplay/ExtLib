@@ -12,6 +12,7 @@
 
 using namespace std;
 
+// Main function
 int main() {
     vec4d a = {10, 20, 30, 40};
     vec4d b = {10, 20, 30, 40};
