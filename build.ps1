@@ -32,7 +32,7 @@ function Write-Red {
 
 try {
     $Host.UI.RawUI.ForegroundColor = 'Green'
-    Write-Green 'Lmaxplay CPP build script v0.9.1 hotfix 2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
+    Write-Green 'Lmaxplay CPP build script v0.9.2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
     
     $OOption = "-O3"
 
