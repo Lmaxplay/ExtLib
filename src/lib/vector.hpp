@@ -5,10 +5,29 @@ template<typename T>
 struct Vec2 {
     T x;
     T y;
+
     Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
     Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
     Vec2<T> operator * (Vec2<T> other) { return {x * other.x, y * other.y }; };
     Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
+
+    T& operator [] (int index) {
+        switch(index) {
+            case 0:
+            return x;
+            break;
+
+            case 1:
+            return y;
+            break;
+
+            default:
+            throw std::out_of_range();
+            return x;
+            break;
+        }
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& vec)
     {
         os << vec.x << ", " << vec.y;
@@ -25,10 +44,33 @@ struct Vec3 {
     T x;
     T y;
     T z;
+
     Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
     Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
     Vec3<T> operator * (Vec3<T> other) { return {x * other.x, y * other.y, z * other.z }; };
     Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
+
+    T& operator [] (int index) {
+        switch(index) {
+            case 0:
+            return x;
+            break;
+
+            case 1:
+            return y;
+            break;
+
+            case 2:
+            return z;
+            break;
+
+            default:
+            throw std::out_of_range("Out of range item");
+            return x;
+            break;
+        }
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Vec3<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z;
@@ -46,10 +88,37 @@ struct Vec4 {
     T y;
     T z;
     T w;
+
     Vec4<T> operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
     Vec4<T> operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
     Vec4<T> operator * (Vec4<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w }; };
     Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
+    
+    T& operator [] (int index) {
+        switch(index) {
+            case 0:
+            return x;
+            break;
+
+            case 1:
+            return y;
+            break;
+
+            case 2:
+            return z;
+            break;
+            
+            case 3:
+            return w;
+            break;
+
+            default:
+            throw std::out_of_range("Out of range item");
+            return x;
+            break;
+        }
+    }
+    
     friend std::ostream& operator<<(std::ostream& os, const Vec4<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
