@@ -63,7 +63,5 @@ try {
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     Write-Output "An error occured"
-    $Host.UI.RawUI.ForegroundColor = 'Red'
-    Write-Output "$Error"
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color
+    Write-Red "$Error"
 }
