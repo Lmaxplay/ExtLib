@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 template<typename T>
 struct Vec2 {
@@ -10,8 +11,12 @@ struct Vec2 {
     Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
     friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& vec)
     {
-        os << "X = " << vec.x << ", Y = " << vec.y;
+        os << vec.x << ", " << vec.y;
         return os;
+    }
+    
+    T getmagnitude() {
+        return std::sqrt(x * x + y * y);
     }
 };
 
@@ -29,6 +34,10 @@ struct Vec3 {
         os << vec.x << ", " << vec.y << ", " << vec.z;
         return os;
     }
+    
+    T getmagnitude() {
+        return std::sqrt(x * x + y * y + z * z);
+    }
 };
 
 template<typename T>
@@ -45,6 +54,10 @@ struct Vec4 {
     {
         os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
         return os;
+    }
+
+    T getmagnitude() {
+        return std::sqrt(x * x + y * y + z * z + w * w);
     }
 };
 
