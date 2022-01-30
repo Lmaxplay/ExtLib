@@ -32,7 +32,7 @@ function Write-Red {
 
 try {
     $Host.UI.RawUI.ForegroundColor = 'Green'
-    Write-Green 'Lmaxplay CPP build script v0.9.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
+    Write-Green 'Lmaxplay CPP build script v0.9.1 hotfix 2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
     
     $OOption = "-O3"
 
@@ -47,7 +47,7 @@ try {
     Write-Yellow 'Running compiler...'
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
-    C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+    C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed
     Write-Yellow "Compile took $CompileTime"
@@ -58,6 +58,7 @@ try {
     } else {
         Write-Yellow "Compile completed succesfully"
     }
+    Write-Output ""
 
 } catch {
     $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it

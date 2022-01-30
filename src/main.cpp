@@ -13,9 +13,9 @@
 using namespace std;
 
 int main() {
-    vec2d a = {10, 20};
-    vec2d b = {10, 20};
-    vec2d c = a + b;
-    cout << c.x << c.y << "\n";
+    vec4d a = {10, 20, 30, 40};
+    vec4d b = {10, 20, 30, 40};
+    vec4d c = a + b;
+    cout << c << "\n";
     return 0;
 }
