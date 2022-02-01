@@ -130,17 +130,26 @@ struct Vec4 {
     }
 };
 
+using vec2s = Vec2<short>;
 using vec2i = Vec2<int>;
+using vec2lli = Vec2<long long int>;
 using vec2l = Vec2<long>;
 using vec2f = Vec2<float>;
 using vec2d = Vec2<double>;
+using vec2ld = Vec2<long double>;
 
+using vec3s = Vec3<short>;
 using vec3i = Vec3<int>;
+using vec3lli = Vec3<long long int>;
 using vec3l = Vec3<long>;
 using vec3f = Vec3<float>;
 using vec3d = Vec3<double>;
+using vec3ld = Vec3<long double>;
 
+using vec4s = Vec4<short>;
 using vec4i = Vec4<int>;
+using vec4lli = Vec4<long long int>;
 using vec4l = Vec4<long>;
 using vec4f = Vec4<float>;
 using vec4d = Vec4<double>;
+using vec4ld = Vec4<long double>;
