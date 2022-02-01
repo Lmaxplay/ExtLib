@@ -1,1 +1,5 @@
 output/app.*
+src/skyapex.hpp
+src/skyapex.cpp
+src/skyapex.cpp
+src/lib/vector.hpp
