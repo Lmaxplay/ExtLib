@@ -1,5 +1,6 @@
 #include <iostream>
 
 void makeskyapex() {
-    std::cout << "Skyapex!!!"; // Log skyapex
+    std::wcout << L"Skyapex!!!"; // Log skyapex
 }
+//i have no idea how to do this
