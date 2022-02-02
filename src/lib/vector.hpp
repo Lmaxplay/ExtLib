@@ -40,6 +40,30 @@ struct Vec2 {
     T getmagnitude() {
         return std::sqrt(x * x + y * y);
     }
+
+    template <typename T2>
+    Vec2(const Vec2<T2> &other) {
+        this->x = other.x;
+        this->y = other.y;
+    }; 
+
+    Vec2(const T x, const T y) {
+        this->x = x;
+        this->y = y;
+        return;
+    }
+
+    Vec2(const T x) {
+        this->x = x;
+        this->y = (T)0;
+        return;
+    }
+
+    Vec2() {
+        this->x = (T)0;
+        this->y = (T)0;
+        return;
+    }
 };
 
 template<typename T>
