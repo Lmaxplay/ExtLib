@@ -1,7 +1,7 @@
 param(
-    [Parameter(Mandatory=$False)][System.String]$Compiler = 'C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe',
     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
     [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
+    [Parameter(Mandatory=$False)][System.Byte]$Compiler = 1,
     [Parameter(Mandatory=$False)][System.Byte]$O = 3,
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
 )
@@ -73,16 +73,23 @@ try {
 
     if($O -eq 0) {$OOption = '-O0'}
     if($O -eq 1) {$OOption = '-O1'}
-    if($O2 -eq 2) {$OOption = '-O2'}
-    if($O3 -eq 3) {$OOption = '-O3'}
-    if($O3 -eq 4) {$OOption = '-OFast'}
+    if($O -eq 2) {$OOption = '-O2'}
+    if($O -eq 3) {$OOption = '-O3'}
+    if($O -eq 4) {$OOption = '-OFast'}
 
     if($Wall -eq 0) {$WallOption = ''}
     if($Wall -eq 1) {$WallOption = '-Wall'}
     Write-Yellow 'Running compiler...'
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
-    C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+    if ($Compiler -eq 0) {
+        C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+    } elseif ($Compiler -eq 2) {
+        
+        C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" 'src/*.cpp' 'src/lib/*.cpp' -Fe:'output/app.exe' -EHsc /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\SDK\ScopeCppSDK\vc15\SDK\lib'
+    } else {
+        g++ -std=c++20 $OOption $WallOption -I$IncludePath 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+    }
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed
     Write-Yellow "Compile took $CompileTime"

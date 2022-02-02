@@ -6,7 +6,7 @@
 #include <string> // string related functions
 #include <limits> // Limits
 
-#include "lib/getExecutableName.h" // Currently unused
+// #include "lib/getExecutableName.h" // Currently unused
 #include "lib/vector.hpp"
 
 using namespace std;
