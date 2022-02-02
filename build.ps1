@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
     [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
-    [Parameter(Mandatory=$False)][System.Byte]$Compiler = 1,
+    [Parameter(Mandatory=$False)][System.Byte]$Compiler = 0,
     [Parameter(Mandatory=$False)][System.String]$O = "3",
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
 )
@@ -73,7 +73,7 @@ try {
 
     if($Wall -eq 0) {$WallOption = ''}
     if($Wall -eq 1) {$WallOption = '-Wall'}
-    Write-Yellow 'Running compiler...'
+    Write-Cyan 'Running compiler...'
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
     if ($Compiler -eq 0) {
@@ -96,7 +96,7 @@ try {
     if($CompileOut -ne 0) {
         Write-Red "exited with error code $CompileOut"
     } else {
-        Write-Yellow "Compile completed succesfully"
+        Write-Cyan "Compile completed succesfully"
     }
     Write-White ""
 
