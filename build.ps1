@@ -98,10 +98,9 @@ try {
     } else {
         Write-Yellow "Compile completed succesfully"
     }
-    Write-Output ""
+    Write-White ""
 
 } catch {
-    $PreviousColor = $Host.UI.RawUI.ForegroundColor # Store previous foreground color, so we can restore it
     Write-Output "An error occured"
     Write-Red "$Error"
 }
