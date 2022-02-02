@@ -60,14 +60,14 @@ function Write-Cyan {
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
-function Write-DarkBlue {
-    $Host.UI.RawUI.ForegroundColor = "DarkBlue"
+function Write-Blue {
+    $Host.UI.RawUI.ForegroundColor = "Blue"
     Write-Output $args # TODO Update this bit to be more informative
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 try {
-    Write-Green 'Lmaxplay CPP build script v1.0.1' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
+    Write-Green 'Lmaxplay CPP build script v1.1.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
 
     $OOption = "-O3"
 
@@ -82,13 +82,17 @@ try {
     Write-Yellow 'Running compiler...'
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
-    if ($Compiler -eq 1) {
+    if ($Compiler -eq 0) {
+        Write-Blue "Using Clang/Clang++"
         C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+    } elseif ($Compiler -eq 1) {
+        Write-Blue "Using GCC/G++"
+        g++ -std=c++20 $OOption $WallOption -I$IncludePath -o'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
     } elseif ($Compiler -eq 2) {
-        
-        C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" 'src/*.cpp' 'src/lib/*.cpp' -Fe:'output/app.exe' -EHsc /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\SDK\ScopeCppSDK\vc15\SDK\lib'
+        Write-Blue "Using MSVC"
+        C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -Fe:'output/app.exe' -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" 'src/*.cpp' 'src/lib/*.cpp' -EHsc /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\SDK\ScopeCppSDK\vc15\SDK\lib'
     } else {
-        g++ -std=c++20 $OOption $WallOption -I$IncludePath 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+        Write-Blue "Invalid compiler, Compiler number $Compiler is not configured"
     }
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed

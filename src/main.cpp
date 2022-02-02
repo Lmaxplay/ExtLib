@@ -16,6 +16,8 @@ int main() {
     vec4ld a = {10.0, 20.0, 30.0};
     vec4ld b = {10.0, 20.0, 30.0};
     vec4ld c = a + b;
+    double I = 0;
+    std::cout << sizeof(I);
     cout << "Of the vector (" << c << ") the length is: " << c.getmagnitude() << " its size is: " << sizeof(c) << "\n";
     return 0;
 }
