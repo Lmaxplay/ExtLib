@@ -67,7 +67,7 @@ function Write-Blue {
 }
 
 try {
-    Write-Green 'Lmaxplay CPP build script v1.1.4' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay'
+    Write-Green 'Lmaxplay CPP build script v1.1.5' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay'
 
     $OOption = "-O$O"
 
@@ -77,10 +77,10 @@ try {
 
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
     if ($Compiler -eq 0) {
-        Write-Blue "Using Clang/Clang++"
+        Write-Blue "Using Clang"
         C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
     } elseif ($Compiler -eq 1) {
-        Write-Blue "Using GCC/G++"
+        Write-Blue "Using GCC"
         g++ -std=c++20 $OOption $WallOption -I$IncludePath -o'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
     } elseif ($Compiler -eq 2) {
         Write-Blue "Using MSVC"
@@ -90,7 +90,7 @@ try {
     }
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed
-    Write-Yellow "Compile took $CompileTime"
+    Write-Cyan "Compile took $CompileTime"
 
     $CompileOut = $LASTEXITCODE
     if($CompileOut -ne 0) {

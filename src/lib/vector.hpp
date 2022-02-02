@@ -1,5 +1,8 @@
 #include <iostream>
 #include <math.h>
+#include <any>
+
+using std::any;
 
 template<typename T>
 struct Vec2 {
@@ -80,10 +83,46 @@ struct Vec3 {
     T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z);
     }
+
+    template <typename T2>
+    Vec3(const Vec3<T2> &other) {
+        this->x = other.x;
+        this->y = other.y;
+        this->z = other.z;
+    }; 
+    
+    Vec3(const T x, const T y, const T z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        return;
+    }
+
+    
+    Vec3(const T x, const T y) {
+        this->x = x;
+        this->y = y;
+        this->z = (T)0;
+        return;
+    }
+
+    Vec3(const T x) {
+        this->x = x;
+        this->y = (T)0;
+        this->z = (T)0;
+        return;
+    }
+
+    Vec3() {
+        this->x = (T)0;
+        this->y = (T)0;
+        this->z = (T)0;
+        return;
+    }
 };
 
 template<typename T>
-struct Vec4 {
+struct Vec4 : any {
     T x;
     T y;
     T z;
@@ -127,6 +166,55 @@ struct Vec4 {
 
     T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z + w * w);
+    }
+
+    template <typename T2>
+    Vec4(const Vec4<T2> &other) {
+        this->x = other.x;
+        this->y = other.y;
+        this->z = other.z;
+        this->w = other.w;
+    }; 
+    
+    Vec4(const T x, const T y, const T z, const T w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+        return;
+    }
+    
+    Vec4(const T x, const T y, const T z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = (T)0;
+        return;
+    }
+
+    
+    Vec4(const T x, const T y) {
+        this->x = x;
+        this->y = y;
+        this->z = (T)0;
+        this->w = (T)0;
+        return;
+    }
+
+    Vec4(const T x) {
+        this->x = x;
+        this->y = (T)0;
+        this->z = (T)0;
+        this->w = (T)0;
+        return;
+    }
+
+    Vec4() {
+        this->x = (T)0;
+        this->y = (T)0;
+        this->z = (T)0;
+        this->w = (T)0;
+        return;
     }
 };
 
