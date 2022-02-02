@@ -14,60 +14,60 @@ $Host.UI.RawUI.ForegroundColor = $PreviousColor
 
 function Write-Green {
     $Host.UI.RawUI.ForegroundColor = 'Green'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Yellow {
     $Host.UI.RawUI.ForegroundColor = 'Yellow'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Red {
     $Host.UI.RawUI.ForegroundColor = 'Red'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Purple {
     $Host.UI.RawUI.ForegroundColor = 'DarkMagenta'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Magenta {
     $Host.UI.RawUI.ForegroundColor = 'Magenta'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-White {
     $Host.UI.RawUI.ForegroundColor = 'White'
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Black {
     $Host.UI.RawUI.ForegroundColor = "Black"
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Cyan {
     $Host.UI.RawUI.ForegroundColor = "Cyan"
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 function Write-Blue {
     $Host.UI.RawUI.ForegroundColor = "Blue"
-    Write-Output $args # TODO Update this bit to be more informative
+    Write-Output $args
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
 try {
-    Write-Green 'Lmaxplay CPP build script v1.1.2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' # TODO Update this bit to be more informative
+    Write-Green 'Lmaxplay CPP build script v1.1.3' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay'
 
     $OOption = "-O3"
 
