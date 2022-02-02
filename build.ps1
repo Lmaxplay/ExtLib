@@ -2,7 +2,7 @@ param(
     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
     [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
     [Parameter(Mandatory=$False)][System.Byte]$Compiler = 1,
-    [Parameter(Mandatory=$False)][System.Byte]$O = 3,
+    [Parameter(Mandatory=$False)][System.String]$O = "3",
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
 )
 
@@ -67,15 +67,9 @@ function Write-Blue {
 }
 
 try {
-    Write-Green 'Lmaxplay CPP build script v1.1.3' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay'
+    Write-Green 'Lmaxplay CPP build script v1.1.4' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay'
 
-    $OOption = "-O3"
-
-    if($O -eq 0) {$OOption = '-O0'}
-    if($O -eq 1) {$OOption = '-O1'}
-    if($O -eq 2) {$OOption = '-O2'}
-    if($O -eq 3) {$OOption = '-O3'}
-    if($O -eq 4) {$OOption = '-OFast'}
+    $OOption = "-O$O"
 
     if($Wall -eq 0) {$WallOption = ''}
     if($Wall -eq 1) {$WallOption = '-Wall'}
