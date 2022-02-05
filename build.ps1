@@ -89,7 +89,7 @@ try {
         exit
     }
 
-    Write-Green 'Lmaxplay CPP build script v1.1.5' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
+    Write-Green 'Lmaxplay CPP build script v1.2.2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
 
     #Write-Cyan "Running on PowerShell version $PSVersionFull" ""
 
@@ -103,7 +103,7 @@ try {
     if ($IsWindows) {
         if ($Compiler -eq 0) {
             Write-Blue "Using Clang"
-            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/*.cpp' 'src/lib/*.cpp' -g
+            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I$IncludePath -o 'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
         } elseif ($Compiler -eq 1) {
             Write-Blue "Using GCC on Windows"
             g++ -std=c++20 $OOption $WallOption -I$IncludePath -o'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
