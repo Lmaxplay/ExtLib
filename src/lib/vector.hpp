@@ -4,8 +4,14 @@
 
 using std::any;
 
+
+/**
+ * @brief A vector2
+ * 
+ * @tparam T Type of the vector2
+ */
 template<typename T>
-struct Vec2 {
+struct Vec2 : any {
     T x;
     T y;
 
@@ -36,10 +42,16 @@ struct Vec2 {
         os << vec.x << ", " << vec.y;
         return os;
     }
-    
+
+    /** 
+     * Calculates the magnitude of the vector2
+     * 
+     * @returns magnitude of the vector
+     */
     T getmagnitude() {
         return std::sqrt(x * x + y * y);
     }
+
 
     template <typename T2>
     Vec2(const Vec2<T2> &other) {
@@ -66,8 +78,13 @@ struct Vec2 {
     }
 };
 
+/**
+ * @brief A vector3
+ * 
+ * @tparam T Type of the vector3
+ */
 template<typename T>
-struct Vec3 {
+struct Vec3 : any {
     T x;
     T y;
     T z;
@@ -103,7 +120,12 @@ struct Vec3 {
         os << vec.x << ", " << vec.y << ", " << vec.z;
         return os;
     }
-    
+
+    /** 
+     * Calculates the magnitude of the vector3
+     * 
+     * @returns magnitude of the vector
+     */
     T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z);
     }
@@ -122,7 +144,7 @@ struct Vec3 {
         return;
     }
 
-    
+
     Vec3(const T x, const T y) {
         this->x = x;
         this->y = y;
@@ -145,6 +167,11 @@ struct Vec3 {
     }
 };
 
+/**
+ * @brief A vector4
+ * 
+ * @tparam T Type of the vector4
+ */
 template<typename T>
 struct Vec4 : any {
     T x;
@@ -156,7 +183,7 @@ struct Vec4 : any {
     Vec4<T> operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
     Vec4<T> operator * (Vec4<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w }; };
     Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
-    
+
     T& operator [] (int index) {
         switch(index) {
             case 0:
@@ -181,16 +208,22 @@ struct Vec4 : any {
             break;
         }
     }
-    
+
     friend std::ostream& operator<<(std::ostream& os, const Vec4<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
         return os;
     }
-
+    
+    /** 
+     * Calculates the magnitude of the vector4
+     * 
+     * @returns magnitude of the vector
+     */
     T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z + w * w);
     }
+
 
     template <typename T2>
     Vec4(const Vec4<T2> &other) {
