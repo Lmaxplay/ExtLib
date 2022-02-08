@@ -60,7 +60,8 @@
             "cinttypes": "cpp",
             "typeinfo": "cpp",
             "any": "cpp",
-            "thread": "cpp"
+            "thread": "cpp",
+            "stop_token": "cpp"
         }
     }
 }

@@ -7,6 +7,7 @@
 #include <limits> // Limits
 
 // #include "lib/getExecutableName.h" // Currently unused
+#include "lib/terminalstyle.hpp"
 #include "lib/vector.hpp"
 
 using namespace std;
@@ -18,6 +19,7 @@ int main() {
     vec4ld b = {10.0, 20.0, 30.0};
     vec4ld c = a + b;
 
-    cout << "Of the vector (" << c << ") the length is: " << c.getmagnitude() << " its size is: " << sizeof(c) << "\n"0
+    coutgreen << "Of the vector (" << c << ") the length is: " << c.getmagnitude() << " its size is: " << sizeof(c) << "\n";
+    consolereset;
     return 0;
 }
