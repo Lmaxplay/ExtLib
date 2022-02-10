@@ -55,8 +55,8 @@ struct Vec2 : any {
 
     template <typename T2>
     Vec2(const Vec2<T2> &other) {
-        this->x = other.x;
-        this->y = other.y;
+        this->x = (T)other.x;
+        this->y = (T)other.y;
     }; 
 
     Vec2(const T x, const T y) {
@@ -132,9 +132,9 @@ struct Vec3 : any {
 
     template <typename T2>
     Vec3(const Vec3<T2> &other) {
-        this->x = other.x;
-        this->y = other.y;
-        this->z = other.z;
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
     }; 
     
     Vec3(const T x, const T y, const T z) {
@@ -227,10 +227,10 @@ struct Vec4 : any {
 
     template <typename T2>
     Vec4(const Vec4<T2> &other) {
-        this->x = other.x;
-        this->y = other.y;
-        this->z = other.z;
-        this->w = other.w;
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)other.w;
     }; 
     
     Vec4(const T x, const T y, const T z, const T w) {

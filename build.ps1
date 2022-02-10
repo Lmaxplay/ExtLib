@@ -114,7 +114,7 @@ try {
             Write-Blue "Invalid compiler, Compiler number $Compiler is not configured"
         }
     } elseif ($IsLinux) {
-        if ($True) {
+        if ($Compiler -eq 0) {
             Write-Blue "Using GCC on Linux"
             g++ -std=c++20 $OOption $WallOption -o 'output/app' 'src/main.cpp' -g
         }
