@@ -83,13 +83,16 @@ function Write-Blue {
     $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
 }
 
+$Location = Get-Location
+$LocationPath = $Location.Path
+
 try {
     if ($PSVersion -lt 7) {
         Write-Red "This version of powershell is not supported, please use Powershell version $PSMinVersion or higher" "You are using Powershell version $PSVersionFull"
         exit
     }
 
-    Write-Green 'Lmaxplay CPP build script v1.2.2' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
+    Write-Green 'Lmaxplay CPP build script v1.3.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
 
     #Write-Cyan "Running on PowerShell version $PSVersionFull" ""
 
@@ -106,7 +109,8 @@ try {
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
         } elseif ($Compiler -eq 1) {
             Write-Blue "Using GCC on Windows"
-            g++ -std=c++20 $OOption $WallOption -I$IncludePath -o'output/app.exe' 'src/**.cpp' 'src/lib/*.cpp' -g
+            Set-Location C:\msys64\mingw64\bin\
+            ./g++ -std=c++20 $OOption $WallOption -I$IncludePath -o"$LocationPath/output/app.exe" "$LocationPath/src/*.cpp" "$LocationPath/src/lib/*.cpp" -g
         } elseif ($Compiler -eq 2) {
             Write-Blue "Using MSVC"
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -Zi -DDEBUG -Fe:'output/app.exe' -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" 'src/*.cpp' 'src/lib/*.cpp' -EHsc -Fo:"output/" -Fd:"output/app.output.pdb" /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\SDK\ScopeCppSDK\vc15\SDK\lib'
@@ -135,8 +139,10 @@ try {
         Write-Cyan "Compile completed succesfully"
     }
     Write-White ""
+    Set-Location $LocationPath
 
 } catch {
     Write-Cyan "An error occured"
     Write-Red "$Error"
+    Set-Location $LocationPath
 }
