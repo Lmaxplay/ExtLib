@@ -100,6 +100,9 @@ namespace ansi {
     const wchar_t* w_newline = L"\n";
     const char* upline = "\x1b[A";
     const wchar_t* w_upline = L"\x1b[A";
+
+    const char* clearline = "\33[2K\r";
+    const wchar_t* w_clearline = L"\33[2K\r";
 }
 
 #define coutred std::cout << ansi::fg_red << ansi::intensity_increased
