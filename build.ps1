@@ -29,6 +29,12 @@ if ($IsWindows) {
 $PreviousColor = 'White'
 $Host.UI.RawUI.ForegroundColor = $PreviousColor
 
+# function Get-Arguments {
+# for ( $i = 0; $i -lt $args.count; $i++ ) {
+#         "Argument  $i is $($args[$i])"
+#     }
+# }
+
 function Write-Green {
     $Host.UI.RawUI.ForegroundColor = 'Green'
     Write-Output $args
