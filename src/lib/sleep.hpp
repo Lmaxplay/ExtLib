@@ -1,7 +1,7 @@
 #include <chrono>
 #include <thread>
 
-namespace sleep {
+namespace sleeps {
 
     void seconds(long long s);
 

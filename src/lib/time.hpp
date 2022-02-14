@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <stdint.h>
 #include <chrono>
 #include <string>

@@ -1,6 +1,6 @@
 #include "sleep.hpp"
 
-namespace sleep {
+namespace sleeps {
 
     void seconds(long long s) {
         std::this_thread::sleep_for(std::chrono::seconds(s));

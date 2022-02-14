@@ -126,7 +126,7 @@ try {
     } elseif ($IsLinux) {
         if ($Compiler -eq 0) {
             Write-Blue "Using GCC on Linux"
-            g++ -std=c++20 $OOption $WallOption -o 'output/app' 'src/main.cpp' -g
+            g++-11 -std=c++20 $OOption $WallOption -o 'output/app' 'src/main.cpp' -g
         }
     } elseif ($IsMacOS) {
         Write-Red "Mac OS is not supported"

@@ -1,7 +1,7 @@
 #include <iostream> // Allow IO
 #include <filesystem> // Filesystem access
-#include <windows.h> // Windows API
-#include <direct.h> // Direct API
+// #include <windows.h> // Windows API
+// #include <direct.h> // Direct API
 #include <fstream> // Filestream
 #include <string> // string related functions
 #include <limits> // Limits
@@ -28,10 +28,5 @@ void clearconsole() {
 // Main function
 int main() {
     std::atexit(clearconsole);
-    while(true) {
-        sleep::miliseconds(1);
-        std::cout << ansi::clearline << "Current unix timestamp: " << (getTimeUnix() / 1000);
-        std::cout << "\n" << std::string("hi")[0];
-    }
     return 0;
 }
