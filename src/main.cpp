@@ -24,6 +24,10 @@
 #include "lib/time.hpp"
 #include "lib/sleep.hpp"
 
+
+#include "lib/betterwindows.hpp"
+
+
 void clearconsole() {
     consolereset;
 }
