@@ -105,21 +105,4 @@ namespace ansi {
     const wchar_t* w_clearline = L"\33[2K\r";
 }
 
-#define coutred std::cout << ansi::fg_red << ansi::intensity_increased
-#define coutgreen std::cout << ansi::fg_green << ansi::intensity_increased
-#define coutyellow std::cout << ansi::fg_yellow << ansi::intensity_increased
-#define coutblue std::cout << ansi::fg_blue << ansi::intensity_increased
-#define coutmagenta std::cout << ansi::fg_magenta << ansi::intensity_increased
-#define coutcyan std::cout << ansi::fg_cyan << ansi::intensity_increased
-#define coutwhite std::cout << ansi::fg_white << ansi::intensity_increased
-#define coutblack std::cout << ansi::fg_black << ansi::intensity_increased
-#define coutdarkred std::cout << ansi::fg_red << ansi::intensity_decreased
-#define coutdarkgreen std::cout << ansi::fg_green << ansi::intensity_decreased
-#define coutdarkyellow std::cout << ansi::fg_yellow << ansi::intensity_decreased
-#define coutdarkblue std::cout << ansi::fg_blue << ansi::intensity_decreased
-#define coutdarkmagenta std::cout << ansi::fg_magenta << ansi::intensity_decreased
-#define coutdarkcyan std::cout << ansi::fg_cyan << ansi::intensity_decreased
-#define coutdarkwhite std::cout << ansi::fg_white << ansi::intensity_decreased
-#define coutdarkblack std::cout << ansi::fg_black << ansi::intensity_decreased
-#define coutreset std::cout << ansi::reset
 #define consolereset std::cout << ansi::reset

@@ -14,12 +14,12 @@ struct Vec2 : any {
     T x;
     T y;
 
-    Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
-    Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
-    Vec2<T> operator * (Vec2<T> other) { return {x * other.x, y * other.y }; };
-    Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
+    inline Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
+    inline Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
+    inline Vec2<T> operator * (Vec2<T> other) { return {x * other.x, y * other.y }; };
+    inline Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
 
-    T& operator [] (int index) {
+    inline T& operator [] (int index) {
         switch(index) {
             case 0:
             return x;
@@ -36,7 +36,7 @@ struct Vec2 : any {
         }
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& vec)
+    inline friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& vec)
     {
         os << vec.x << ", " << vec.y;
         return os;
@@ -47,30 +47,30 @@ struct Vec2 : any {
      * 
      * @returns magnitude of the vector
      */
-    T getmagnitude() {
+    inline T getmagnitude() {
         return std::sqrt(x * x + y * y);
     }
 
 
     template <typename T2>
-    Vec2(const Vec2<T2> &other) {
+    inline Vec2(const Vec2<T2> &other) {
         this->x = (T)other.x;
         this->y = (T)other.y;
     }; 
 
-    Vec2(const T x, const T y) {
+    inline Vec2(const T x, const T y) {
         this->x = x;
         this->y = y;
         return;
     }
 
-    Vec2(const T x) {
+    inline Vec2(const T x) {
         this->x = x;
         this->y = (T)0;
         return;
     }
 
-    Vec2() {
+    inline Vec2() {
         this->x = (T)0;
         this->y = (T)0;
         return;
@@ -88,12 +88,12 @@ struct Vec3 : any {
     T y;
     T z;
 
-    Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
-    Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
-    Vec3<T> operator * (Vec3<T> other) { return {x * other.x, y * other.y, z * other.z }; };
-    Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
+    inline Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
+    inline Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
+    inline Vec3<T> operator * (Vec3<T> other) { return {x * other.x, y * other.y, z * other.z }; };
+    inline Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
 
-    T& operator [] (int index) {
+    inline T& operator [] (int index) {
         switch(index) {
             case 0:
             return x;
@@ -114,7 +114,7 @@ struct Vec3 : any {
         }
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Vec3<T>& vec)
+    inline friend std::ostream& operator<<(std::ostream& os, const Vec3<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z;
         return os;
@@ -125,18 +125,18 @@ struct Vec3 : any {
      * 
      * @returns magnitude of the vector
      */
-    T getmagnitude() {
+    inline T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z);
     }
 
     template <typename T2>
-    Vec3(const Vec3<T2> &other) {
+    inline Vec3(const Vec3<T2> &other) {
         this->x = (T)other.x;
         this->y = (T)other.y;
         this->z = (T)other.z;
     }; 
     
-    Vec3(const T x, const T y, const T z) {
+    inline Vec3(const T x, const T y, const T z) {
         this->x = x;
         this->y = y;
         this->z = z;
@@ -144,21 +144,21 @@ struct Vec3 : any {
     }
 
 
-    Vec3(const T x, const T y) {
+    inline Vec3(const T x, const T y) {
         this->x = x;
         this->y = y;
         this->z = (T)0;
         return;
     }
 
-    Vec3(const T x) {
+    inline Vec3(const T x) {
         this->x = x;
         this->y = (T)0;
         this->z = (T)0;
         return;
     }
 
-    Vec3() {
+    inline Vec3() {
         this->x = (T)0;
         this->y = (T)0;
         this->z = (T)0;
@@ -183,7 +183,7 @@ struct Vec4 : any {
     Vec4<T> operator * (Vec4<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w }; };
     Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
 
-    T& operator [] (int index) {
+    inline T& operator [] (int index) {
         switch(index) {
             case 0:
             return x;
@@ -208,7 +208,7 @@ struct Vec4 : any {
         }
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Vec4<T>& vec)
+    inline friend std::ostream& operator<<(std::ostream& os, const Vec4<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
         return os;
@@ -219,20 +219,20 @@ struct Vec4 : any {
      * 
      * @returns magnitude of the vector
      */
-    T getmagnitude() {
+    inline T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z + w * w);
     }
 
 
     template <typename T2>
-    Vec4(const Vec4<T2> &other) {
+    inline Vec4(const Vec4<T2> &other) {
         this->x = (T)other.x;
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
     }; 
     
-    Vec4(const T x, const T y, const T z, const T w) {
+    inline Vec4(const T x, const T y, const T z, const T w) {
         this->x = x;
         this->y = y;
         this->z = z;
@@ -240,7 +240,7 @@ struct Vec4 : any {
         return;
     }
     
-    Vec4(const T x, const T y, const T z) {
+    inline Vec4(const T x, const T y, const T z) {
         this->x = x;
         this->y = y;
         this->z = z;
@@ -249,7 +249,7 @@ struct Vec4 : any {
     }
 
     
-    Vec4(const T x, const T y) {
+    inline Vec4(const T x, const T y) {
         this->x = x;
         this->y = y;
         this->z = (T)0;
@@ -257,7 +257,7 @@ struct Vec4 : any {
         return;
     }
 
-    Vec4(const T x) {
+    inline Vec4(const T x) {
         this->x = x;
         this->y = (T)0;
         this->z = (T)0;
@@ -265,7 +265,7 @@ struct Vec4 : any {
         return;
     }
 
-    Vec4() {
+    inline Vec4() {
         this->x = (T)0;
         this->y = (T)0;
         this->z = (T)0;

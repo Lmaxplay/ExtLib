@@ -25,8 +25,6 @@
 #include "lib/sleep.hpp"
 
 
-#include "lib/betterwindows.hpp"
-
 void clearconsole() {
     consolereset;
 }
@@ -35,6 +33,11 @@ void clearconsole() {
 // Main function
 int main() {
     std::atexit(clearconsole);
-    std::cout << 1.1 * 1.1 << "\n";
+    long i = 0;
+    vec4i a = vec4i(0, 100, 200, 300);
+    vec4i b = vec4i(0, 100, 200, 300);
+    while(i <= 1000000000l) {
+        i = 0;
+    }
     return 0;
 }
