@@ -6,6 +6,8 @@ param(
     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
 )
 
+$ScriptVersion = "1.3.1"
+
 $PSMinVersion = 7
 $PSVersion = $PSVersionTable.PSVersion.Major
 if($PSVersionTable.PSVersion.Major -lt 6) {
@@ -98,7 +100,7 @@ try {
         exit
     }
 
-    Write-Green 'Lmaxplay CPP build script v1.3.0' 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
+    Write-Green "Lmaxplay CPP build script $ScriptVersion" 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
 
     #Write-Cyan "Running on PowerShell version $PSVersionFull" ""
 

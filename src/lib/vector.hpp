@@ -4,7 +4,6 @@
 
 using std::any;
 
-
 /**
  * @brief A vector2
  * 
