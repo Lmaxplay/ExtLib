@@ -1,12 +1,4 @@
-# param(
-#     [Parameter(Mandatory=$False)][System.String]$Main = 'main.cpp',
-#     [Parameter(Mandatory=$False)][System.Byte]$Wall = 0,
-#     [Parameter(Mandatory=$False)][System.Byte]$Compiler = 0,
-#     [Parameter(Mandatory=$False)][System.String]$O = "3",
-#     [Parameter(Mandatory=$False)][System.String]$IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
-# )
-
-$ScriptVersion = "2.0.0"
+$ScriptVersion = "2.0.1"
 
 # Header start
 $OS = "Unknown OS"
@@ -86,8 +78,6 @@ function Write-Blue {
 # Arguments check
 $oargs = $args
 
-Write-White $oargs
-
 function Get-Parameter([String]$param) {
     $value = ""
     for ($id = 0; $id -lt $oargs.Length; $id = $id + 1) {
@@ -107,6 +97,7 @@ function Get-Parameter([String]$param) {
                     $value = $temp[1]
                 }
             }
+
             if ($id + 1 -lt $oargs.Length -and $item.Contains(":")) {
                     #if ($oargs[$id + 1].ToString().StartsWith(":")) {
                     
@@ -116,6 +107,12 @@ function Get-Parameter([String]$param) {
                         return $oargs[$id + 1].ToString()
                     }
             #}
+            } elseif ($item.Contains(":")) {
+                $temp = $item.Split(":")
+                $prefix = $temp[0]
+                if ($prefix -eq $param) {
+                    $value = $temp[1]
+                }
             }
         }
     }
