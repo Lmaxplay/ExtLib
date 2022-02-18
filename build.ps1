@@ -1,4 +1,4 @@
-$ScriptVersion = "2.1.0"
+$ScriptVersion = "2.1.1"
 
 # Header start
 $OS = "Unknown OS"
@@ -131,13 +131,13 @@ $Location = Get-Location
 $LocationPath = $Location.Path
 
 try {
-    if ($PSVersion -lt 7) {
+    if ($PSVersion -lt $PSMinVersion) {
         Write-Red "You are using PowerShell version $PSVersionFull, which is not officially supported by this script, using PowerShell 7"
-        Write-Blue "Trying to run PowerShell 7 from command line"
+        Write-Blue "Running PowerShell 7 to execute script..."
         $InvocationName = $MyInvocation.MyCommand.Name
         $PowerShell7Exists = Test-Path "C:\Program Files\powershell\7\"
         if ($PowerShell7Exists -eq $False) {
-            if($IsWindows && [System.Environment]::OSVersion.Version.Major -ge 10) {
+            if($IsWindows -and [System.Environment]::OSVersion.Version.Major -ge 10) {
                 Write-Red "PowerShell 7 not found"
                 Write-Blue "Installing PowerShell 7 using WinGet"
                 Winget install Microsoft.PowerShell
@@ -149,11 +149,14 @@ try {
         }
         try {
             pwsh.exe -Command "./$InvocationName $args" 
+            Write-Green 'Run "pwsh" to use PowerShell 7'
+            exit
         } catch {
             Write-Red "PowerShell 7 doesn't seem to be installed, please install it at https://aka.ms/PSWindows to use this"
+            exit
         }
-        exit
     }
+
 
     Write-Green "Lmaxplay CPP build script $ScriptVersion" 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
 
