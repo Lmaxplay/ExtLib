@@ -10,7 +10,7 @@ using std::any;
  * @tparam T Type of the vector2
  */
 template<typename T>
-struct Vec2 : any {
+struct Vec2 {
     T x;
     T y;
 
@@ -83,7 +83,7 @@ struct Vec2 : any {
  * @tparam T Type of the vector3
  */
 template<typename T>
-struct Vec3 : any {
+struct Vec3 {
     T x;
     T y;
     T z;
@@ -172,7 +172,7 @@ struct Vec3 : any {
  * @tparam T Type of the vector4
  */
 template<typename T>
-struct Vec4 : any {
+struct Vec4 {
     T x;
     T y;
     T z;
