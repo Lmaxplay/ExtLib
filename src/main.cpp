@@ -36,8 +36,11 @@ int main() {
     long i = 0;
     vec4i a = vec4i(0, 100, 200, 300);
     vec4i b = vec4i(0, 100, 200, 300);
+    vec4i c = vec4i(400, 100, 200, 300);
     while(i <= 1000000000l) {
-        i = 0;
+        i++;
+        c = a + b;
     }
+    std::cout << i;
     return 0;
 }

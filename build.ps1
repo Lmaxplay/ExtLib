@@ -1,4 +1,4 @@
-$ScriptVersion = "2.0.1"
+$ScriptVersion = "2.0.2"
 
 # Header start
 $OS = "Unknown OS"
@@ -166,7 +166,7 @@ try {
     if ($IsWindows) {
         if ($Compiler -eq 0) {
             Write-Blue "Using Clang"
-            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/**.cpp' -g
+            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/*.cpp' -g
         } elseif ($Compiler -eq 1) {
             Write-Blue "Using GCC on Windows from MSYS2"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
