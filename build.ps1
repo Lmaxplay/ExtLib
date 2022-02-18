@@ -1,4 +1,4 @@
-$ScriptVersion = "2.0.2"
+$ScriptVersion = "2.1.0"
 
 # Header start
 $OS = "Unknown OS"
@@ -132,7 +132,26 @@ $LocationPath = $Location.Path
 
 try {
     if ($PSVersion -lt 7) {
-        Write-Red "This version of powershell is not supported, please use Powershell version $PSMinVersion or higher" "You are using Powershell version $PSVersionFull"
+        Write-Red "You are using PowerShell version $PSVersionFull, which is not officially supported by this script, using PowerShell 7"
+        Write-Blue "Trying to run PowerShell 7 from command line"
+        $InvocationName = $MyInvocation.MyCommand.Name
+        $PowerShell7Exists = Test-Path "C:\Program Files\powershell\7\"
+        if ($PowerShell7Exists -eq $False) {
+            if($IsWindows && [System.Environment]::OSVersion.Version.Major -ge 10) {
+                Write-Red "PowerShell 7 not found"
+                Write-Blue "Installing PowerShell 7 using WinGet"
+                Winget install Microsoft.PowerShell
+            } elseif ($IsWindows) {
+                Write-Red "Unable to install PowerShell since you don't have WinGet"
+            } elseif($IsLinux) {
+                Write-Red "WARNING: Unable to automatically install PowerShell 7 on linux, please install it to continue"
+            }
+        }
+        try {
+            pwsh.exe -Command "./$InvocationName $args" 
+        } catch {
+            Write-Red "PowerShell 7 doesn't seem to be installed, please install it at https://aka.ms/PSWindows to use this"
+        }
         exit
     }
 
