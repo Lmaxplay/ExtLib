@@ -1,4 +1,4 @@
-$ScriptVersion = "2.1.1"
+$ScriptVersion = "2.2.0"
 
 # Header start
 $OS = "Unknown OS"
@@ -140,7 +140,7 @@ try {
             if($IsWindows -and [System.Environment]::OSVersion.Version.Major -ge 10) {
                 Write-Red "PowerShell 7 not found"
                 Write-Blue "Installing PowerShell 7 using WinGet"
-                Winget install Microsoft.PowerShell
+                WinGet install Microsoft.PowerShell
             } elseif ($IsWindows) {
                 Write-Red "Unable to install PowerShell since you don't have WinGet"
             } elseif($IsLinux) {
@@ -187,15 +187,15 @@ try {
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
     if ($IsWindows) {
         if ($Compiler -eq 0) {
-            Write-Blue "Using Clang"
-            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/*.cpp' -g
-        } elseif ($Compiler -eq 1) {
             Write-Blue "Using GCC on Windows from MSYS2"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
             if($env:Path.Contains("C:/msys64/mingw64/bin") -eq $false) {
                 $env:Path += ';C:/msys64/mingw64/bin'
             }
             g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
+        } elseif ($Compiler -eq 0) {
+            Write-Blue "Using Clang"
+            C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/**.cpp' 'src/lib/**.cpp'# -g
         } elseif ($Compiler -eq 2) {
             Write-Blue "Using MSVC"
             if($O -eq "3") {$O = "2"}
@@ -206,8 +206,14 @@ try {
         }
     } elseif ($IsLinux) {
         if ($Compiler -eq 0) {
-            Write-Blue "Using GCC on Linux"
-            g++-11 -std=c++20 $OOption $WallOption -o 'output/app' 'src/main.cpp' -g
+            Write-Blue "Using GCC-11 on Linux"
+            g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -g
+        } elseif ($Compiler -eq 1) {
+            Write-Blue "Using GCC-system on Linux"
+            g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -g
+        } elseif ($Compiler -eq 2) {
+            Write-Blue "Using Clang on Linux"
+            clang++ -std=c++20 $OOption $WallOption -iquote -I"/usr/lib/clang/10/include" -o 'output/app' "./src/main.cpp" -g
         } else {
             Write-Blue "$Compiler is not supported"
         }

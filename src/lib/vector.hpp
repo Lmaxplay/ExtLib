@@ -30,7 +30,7 @@ struct Vec2 {
             break;
 
             default:
-            throw std::out_of_range();
+            throw std::out_of_range("Out of range item");
             return x;
             break;
         }
