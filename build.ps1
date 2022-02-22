@@ -187,13 +187,10 @@ try {
     $CompilerTimer = [Diagnostics.Stopwatch]::StartNew()
     if ($IsWindows) {
         if ($Compiler -eq 0) {
-            Write-Blue "Using GCC on Windows from MSYS2"
+            Write-Blue "Using GCC on Windows from Chocolatey"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
-            if($env:Path.Contains("C:/msys64/mingw64/bin") -eq $false) {
-                $env:Path += ';C:/msys64/mingw64/bin'
-            }
-            g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
-        } elseif ($Compiler -eq 0) {
+            C:/ProgramData/Chocolatey/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
+        } elseif ($Compiler -eq 1) {
             Write-Blue "Using Clang"
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/**.cpp' 'src/lib/**.cpp'# -g
         } elseif ($Compiler -eq 2) {
@@ -201,6 +198,13 @@ try {
             if($O -eq "3") {$O = "2"}
             $OOption = "-O$O"
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -Zi -DDEBUG -Fe:'output/app.exe' -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" 'src/*.cpp' 'src/lib/*.cpp' -EHsc -Fo:"output/" -Fd:"output/app.output.pdb" /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22000.0\um\x64' -LIBPATH:'C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22000.0\ucrt\x64'
+        } elseif ($Compiler -eq 3) {
+            Write-Blue "Using GCC on Windows from MSYS2"
+            # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
+            if($env:Path.Contains("C:/msys64/mingw64/bin") -eq $false) {
+                $env:Path += ';C:/msys64/mingw64/bin'
+            }
+            C:/msys64/mingw64/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
         } else {
             Write-Blue "Invalid compiler, Compiler number $Compiler is not configured"
         }
