@@ -20,7 +20,7 @@
 // #include "lib/ext/betterwindows.hpp"
 
 void clearconsole() {
-    consolereset;
+    ansi::resetconsole();
 }
 
 // Main function

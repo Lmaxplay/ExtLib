@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iosfwd>
 
 // ANSI terminal manipulation
 namespace ansi {
@@ -106,6 +106,8 @@ namespace ansi {
 
     const char* clear = "\033c";
     const wchar_t* w_clear = L"\033c";
-}
 
-#define consolereset std::cout << ansi::reset
+    void resetconsole() {
+        std::cout << ansi::reset;
+    }
+}

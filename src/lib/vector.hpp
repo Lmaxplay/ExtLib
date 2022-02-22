@@ -23,16 +23,13 @@ struct Vec2 {
         switch(index) {
             case 0:
             return x;
-            break;
 
             case 1:
             return y;
-            break;
 
             default:
             throw std::out_of_range("Out of range item");
             return x;
-            break;
         }
     }
 
@@ -97,20 +94,16 @@ struct Vec3 {
         switch(index) {
             case 0:
             return x;
-            break;
 
             case 1:
             return y;
-            break;
 
             case 2:
             return z;
-            break;
 
             default:
             throw std::out_of_range("Out of range item");
             return x;
-            break;
         }
     }
 
@@ -187,24 +180,19 @@ struct Vec4 {
         switch(index) {
             case 0:
             return x;
-            break;
 
             case 1:
             return y;
-            break;
 
             case 2:
             return z;
-            break;
             
             case 3:
             return w;
-            break;
 
             default:
             throw std::out_of_range("Out of range item");
             return x;
-            break;
         }
     }
 
