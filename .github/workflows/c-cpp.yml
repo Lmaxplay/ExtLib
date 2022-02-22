@@ -12,9 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: download powershell
+    - name: install powershell with snapd
       run: sudo snap install powershell --classic 
-    - name: install powershell
-      run: sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
     - name: pwsh
       run: pwsh -File build.ps1
