@@ -27,10 +27,7 @@ void clearconsole() {
 int main() {
     std::atexit(clearconsole);
 
-    std::vector<std::string> strings(1024, std::string("A"));
-    bool instrings = std::find(strings.begin(), strings.end(), "A") != strings.end();
-
-    std::cout << instrings << ansi::newline << ansi::;
+    std::cout << "hi, this will be gone" << ansi::clearline;
 
     return 0;
 }

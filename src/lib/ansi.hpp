@@ -101,8 +101,11 @@ namespace ansi {
     const char* upline = "\x1b[A";
     const wchar_t* w_upline = L"\x1b[A";
 
-    const char* clearline = "\33[2K\r";
-    const wchar_t* w_clearline = L"\33[2K\r";
+    const char* clearline = "\033[2K";
+    const wchar_t* w_clearline = L"\033[2K";
+
+    const char* clear = "\033c";
+    const wchar_t* w_clear = "\033c";
 }
 
 #define consolereset std::cout << ansi::reset
