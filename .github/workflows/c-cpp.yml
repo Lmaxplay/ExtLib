@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: download powershell
-      run: curl https://objects.githubusercontent.com/github-production-release-asset-2e65be/49609581/c2889528-a92d-45dc-8036-13b44daa83e8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220222T130105Z&X-Amz-Expires=300&X-Amz-Signature=86e5a6050b77dc09aaa8d4f6552bf9a523db01b85039143d1f9b0f779087fc41&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=49609581&response-content-disposition=attachment%3B%20filename%3Dpowershell-lts_7.2.1-1.deb_amd64.deb&response-content-type=application%2Foctet-stream
+      run: sudo snap install powershell --classic 
     - name: install powershell
       run: sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
     - name: pwsh
