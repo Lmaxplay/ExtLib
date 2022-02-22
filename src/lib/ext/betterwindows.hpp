@@ -6,4 +6,6 @@
 #include <direct.h>
 #undef max
 #undef min
+#undef far
+#undef near
 #endif
