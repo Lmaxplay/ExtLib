@@ -1,0 +1,19 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
+    - name: pwsh
+      run: pwsh -File build.ps1
