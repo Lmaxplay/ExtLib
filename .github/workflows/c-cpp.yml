@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - name: install powershell with snapd
-      run: sudo snap install powershell --classic 
+      run: sudo snap install powershell --classic
+    - name: go to github repo
+      run: cd /github/workspace
     - name: pwsh
       run: pwsh -File build.ps1
