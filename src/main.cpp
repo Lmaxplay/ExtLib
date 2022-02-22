@@ -1,5 +1,5 @@
 #include <iostream> // Allow IO
-// #include <filesystem> // Filesystem access
+#include <filesystem> // Filesystem access
 // #include <fstream> // Filestream
 // #include <string> // string related functions
 // #include <limits> // Limits
@@ -11,7 +11,7 @@
 // #include <cinttypes>
 
 // #include "lib/getExecutableName.h" // Currently unused
-#include "lib/terminalstyle.hpp"
+#include "lib/ansi.hpp"
 #include "lib/vector.hpp"
 // #include "lib/time.hpp"
 // #include "lib/sleep.hpp"
@@ -26,7 +26,11 @@ void clearconsole() {
 // Main function
 int main() {
     std::atexit(clearconsole);
-    std::cout << ansi::newline;
+
+    std::vector<std::string> strings(1024, std::string("A"));
+    bool instrings = std::find(strings.begin(), strings.end(), "A") != strings.end();
+
+    std::cout << instrings << ansi::newline << ansi::;
 
     return 0;
 }

@@ -85,11 +85,14 @@
             "xstring": "cpp",
             "xtr1common": "cpp",
             "xtree": "cpp",
-            "xutility": "cpp"
+            "xutility": "cpp",
+            "numbers": "cpp"
         },
         "discord.enabled": true,
         "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
         "C_Cpp.default.cppStandard": "c++20",
-        "C_Cpp.default.cStandard": "c17"
+        "C_Cpp.default.cStandard": "c17",
+        "C_Cpp.default.windowsSdkVersion": "10.0.22000.0",
+        "C_Cpp.default.compilerPath": ""
     }
 }
