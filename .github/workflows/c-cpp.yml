@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: configure
+    - name: download powershell
+      run: curl https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-lts_7.2.1-1.deb_amd64.deb
+    - name: install powershell
       run: sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
     - name: pwsh
       run: pwsh -File build.ps1
