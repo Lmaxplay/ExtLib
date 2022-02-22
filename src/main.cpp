@@ -27,7 +27,7 @@ void clearconsole() {
 int main() {
     std::atexit(clearconsole);
 
-    std::cout << "hi, this will be gone" << ansi::clearline;
+    std::cout << ansi::blink_off << ansi::fg_red << "Text." << ansi::newline;
 
     return 0;
 }

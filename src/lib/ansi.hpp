@@ -36,7 +36,7 @@ namespace ansi {
     const char* overlined = "\033[1;53m";
     const char* inverse = "\033[1;7m"; // Swap foreground and background colors
     const char* bold_off = "\033[1;21m";
-    const char* bright_off = "\033[1;21m";
+    const char* bright_off = "\033[1;21m"; // May underline
     const char* underline_off = "\033[1;24m";
     const char* underlined_off = "\033[1;24m";
     const char* inverse_off = "\033[1;27m";
@@ -45,7 +45,7 @@ namespace ansi {
     const char* blink_off = "\033[1;25m";
     const char* overline_off = "\033[1;55m";
     const char* overlined_off = "\033[1;55m";
-    const char* intensity_normal = "\033[1;21m";
+    const char* intensity_normal = "\033[1;21m"; // May underline
     const char* intensity_increased = "\033[1;1m";
     const char* intensity_decreased = "\033[1;2m"; // Light font weight
 
@@ -83,7 +83,7 @@ namespace ansi {
     const wchar_t* w_overlined = L"\033[1;53m";
     const wchar_t* w_inverse = L"\033[1;7m"; // Swap foreground and background colors
     const wchar_t* w_bold_off = L"\033[1;21m";
-    const wchar_t* w_bright_off = L"\033[1;21m";
+    const wchar_t* w_bright_off = L"\033[1;21m"; // May underline
     const wchar_t* w_underline_off = L"\033[1;24m";
     const wchar_t* w_underlined_off = L"\033[1;24m";
     const wchar_t* w_inverse_off = L"\033[1;27m";
@@ -92,7 +92,7 @@ namespace ansi {
     const wchar_t* w_blink_off = L"\033[1;25m";
     const wchar_t* w_overline_off = L"\033[1;55m";
     const wchar_t* w_overlined_off = L"\033[1;55m";
-    const wchar_t* w_intensity_normal = L"\033[1;21m";
+    const wchar_t* w_intensity_normal = L"\033[1;21m"; // May underline
     const wchar_t* w_intensity_increased = L"\033[1;1m";
     const wchar_t* w_intensity_decreased = L"\033[1;2m"; // Light font weight
 
@@ -105,7 +105,7 @@ namespace ansi {
     const wchar_t* w_clearline = L"\033[2K";
 
     const char* clear = "\033c";
-    const wchar_t* w_clear = "\033c";
+    const wchar_t* w_clear = L"\033c";
 }
 
 #define consolereset std::cout << ansi::reset
