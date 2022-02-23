@@ -23,19 +23,19 @@ namespace ansi {
     const char* bg_white                     = "\033[1;47m";
     const char* bg_default                   = "\033[1;49m";
 
-    const char* reset                        = "\033[1;0m"; // Resets styles
-    const char* bold                         = "\033[1;1m"; // makes it bold/bright, this is often a brighter shade of the same color
-    const char* bright                       = "\033[1;1m"; // makes it bold/bright, this is often a brighter shade of the same color
+    const char* reset                        = "\033[1;0m";  // Resets styles
+    const char* bold                         = "\033[1;1m";  // makes it bold/bright, this is often a brighter shade of the same color
+    const char* bright                       = "\033[1;1m";  // makes it bold/bright, this is often a brighter shade of the same color
     const char* underline                    = "\033[1;4m";
     const char* underlined                   = "\033[1;4m";
     const char* crossed                      = "\033[1;9m";
     const char* crossed_out                  = "\033[1;9m";
     const char* blink                        = "\033[1;5m";
     const char* blink_slow                   = "\033[1;5m";
-    const char* blink_fast                   = "\033[1;6m"; // Not widely supported
+    const char* blink_fast                   = "\033[1;6m";  // Not widely supported
     const char* overline                     = "\033[1;53m";
     const char* overlined                    = "\033[1;53m";
-    const char* inverse                      = "\033[1;7m"; // Swap foreground and background colors
+    const char* inverse                      = "\033[1;7m";  // Swap foreground and background colors
     const char* bold_off                     = "\033[1;21m";
     const char* bright_off                   = "\033[1;21m"; // May underline
     const char* underline_off                = "\033[1;24m";
@@ -48,7 +48,7 @@ namespace ansi {
     const char* overlined_off                = "\033[1;55m";
     const char* intensity_normal             = "\033[1;21m"; // May underline
     const char* intensity_increased          = "\033[1;1m";
-    const char* intensity_decreased          = "\033[1;2m"; // Light font weight
+    const char* intensity_decreased          = "\033[1;2m";  // Light font weight
 
     const wchar_t* w_fg_black                = L"\033[1;30m";
     const wchar_t* w_fg_red                  = L"\033[1;31m";
@@ -70,21 +70,21 @@ namespace ansi {
     const wchar_t* w_bg_white                = L"\033[1;47m";
     const wchar_t* w_bg_default              = L"\033[1;49m";
 
-    const wchar_t* w_reset                   = L"\033[1;0m"; // Resets styles
-    const wchar_t* w_bold                    = L"\033[1;1m"; // makes it bold/bright, this is often a brighter shade of the same color
-    const wchar_t* w_bright                  = L"\033[1;1m"; // makes it bold/bright, this is often a brighter shade of the same color
+    const wchar_t* w_reset                   = L"\033[1;0m";     // Resets styles
+    const wchar_t* w_bold                    = L"\033[1;1m";     // makes it bold/bright, this is often a brighter shade of the same color
+    const wchar_t* w_bright                  = L"\033[1;1m";     // makes it bold/bright, this is often a brighter shade of the same color
     const wchar_t* w_underline               = L"\033[1;4m";
     const wchar_t* w_underlined              = L"\033[1;4m";
     const wchar_t* w_crossed                 = L"\033[1;9m";
     const wchar_t* w_crossed_out             = L"\033[1;9m";
     const wchar_t* w_blink                   = L"\033[1;5m";
     const wchar_t* w_blink_slow              = L"\033[1;5m";
-    const wchar_t* w_blink_fast              = L"\033[1;6m"; // Not widely supported
+    const wchar_t* w_blink_fast              = L"\033[1;6m";     // Not widely supported
     const wchar_t* w_overline                = L"\033[1;53m";
     const wchar_t* w_overlined               = L"\033[1;53m";
-    const wchar_t* w_inverse                 = L"\033[1;7m"; // Swap foreground and background colors
+    const wchar_t* w_inverse                 = L"\033[1;7m";     // Swap foreground and background colors
     const wchar_t* w_bold_off                = L"\033[1;21m";
-    const wchar_t* w_bright_off              = L"\033[1;21m"; // May underline
+    const wchar_t* w_bright_off              = L"\033[1;21m";    // May underline
     const wchar_t* w_underline_off           = L"\033[1;24m";
     const wchar_t* w_underlined_off          = L"\033[1;24m";
     const wchar_t* w_inverse_off             = L"\033[1;27m";
@@ -93,9 +93,9 @@ namespace ansi {
     const wchar_t* w_blink_off               = L"\033[1;25m";
     const wchar_t* w_overline_off            = L"\033[1;55m";
     const wchar_t* w_overlined_off           = L"\033[1;55m";
-    const wchar_t* w_intensity_normal        = L"\033[1;21m"; // May underline
+    const wchar_t* w_intensity_normal        = L"\033[1;21m";    // May underline
     const wchar_t* w_intensity_increased     = L"\033[1;1m";
-    const wchar_t* w_intensity_decreased     = L"\033[1;2m"; // Light font weight
+    const wchar_t* w_intensity_decreased     = L"\033[1;2m";     // Light font weight
 
     const std::string s_fg_black             = std::string("\033[1;30m");
     const std::string s_fg_red               = std::string("\033[1;31m");
@@ -117,21 +117,21 @@ namespace ansi {
     const std::string s_bg_white             = std::string("\033[1;47m");
     const std::string s_bg_default           = std::string("\033[1;49m");
 
-    const std::string s_reset                = std::string("\033[1;0m"); // Resets styles
-    const std::string s_bold                 = std::string("\033[1;1m"); // makes it bold/bright, this is often a brighter shade of the same color
-    const std::string s_bright               = std::string("\033[1;1m"); // makes it bold/bright, this is often a brighter shade of the same color
+    const std::string s_reset                = std::string("\033[1;0m");     // Resets styles
+    const std::string s_bold                 = std::string("\033[1;1m");     // makes it bold/bright, this is often a brighter shade of the same color
+    const std::string s_bright               = std::string("\033[1;1m");     // makes it bold/bright, this is often a brighter shade of the same color
     const std::string s_underline            = std::string("\033[1;4m");
     const std::string s_underlined           = std::string("\033[1;4m");
     const std::string s_crossed              = std::string("\033[1;9m");
     const std::string s_crossed_out          = std::string("\033[1;9m");
     const std::string s_blink                = std::string("\033[1;5m");
     const std::string s_blink_slow           = std::string("\033[1;5m");
-    const std::string s_blink_fast           = std::string("\033[1;6m"); // Not widely supported
+    const std::string s_blink_fast           = std::string("\033[1;6m");     // Not widely supported
     const std::string s_overline             = std::string("\033[1;53m");
     const std::string s_overlined            = std::string("\033[1;53m");
-    const std::string s_inverse              = std::string("\033[1;7m"); // Swap foreground and background colors
+    const std::string s_inverse              = std::string("\033[1;7m");     // Swap foreground and background colors
     const std::string s_bold_off             = std::string("\033[1;21m");
-    const std::string s_bright_off           = std::string("\033[1;21m"); // May underline
+    const std::string s_bright_off           = std::string("\033[1;21m");    // May underline
     const std::string s_underline_off        = std::string("\033[1;24m");
     const std::string s_underlined_off       = std::string("\033[1;24m");
     const std::string s_inverse_off          = std::string("\033[1;27m");
@@ -140,9 +140,9 @@ namespace ansi {
     const std::string s_blink_off            = std::string("\033[1;25m");
     const std::string s_overline_off         = std::string("\033[1;55m");
     const std::string s_overlined_off        = std::string("\033[1;55m");
-    const std::string s_intensity_normal     = std::string("\033[1;21m"); // May underline
+    const std::string s_intensity_normal     = std::string("\033[1;21m");    // May underline
     const std::string s_intensity_increased  = std::string("\033[1;1m");
-    const std::string s_intensity_decreased  = std::string("\033[1;2m"); // Light font weight
+    const std::string s_intensity_decreased  = std::string("\033[1;2m");     // Light font weight
 
     const char* newline                      = "\n";
     const wchar_t* w_newline                 = L"\n";
