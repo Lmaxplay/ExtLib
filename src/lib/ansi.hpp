@@ -1,4 +1,5 @@
 #include <iosfwd>
+#include <string>
 
 // ANSI terminal manipulation
 namespace ansi {
@@ -96,16 +97,68 @@ namespace ansi {
     const wchar_t* w_intensity_increased = L"\033[1;1m";
     const wchar_t* w_intensity_decreased = L"\033[1;2m"; // Light font weight
 
+    const std::string s_fg_black = std::string("\033[1;30m");
+    const std::string s_fg_red = std::string("\033[1;31m");
+    const std::string s_fg_green = std::string("\033[1;32m");
+    const std::string s_fg_yellow = std::string("\033[1;33m");
+    const std::string s_fg_blue = std::string("\033[1;34m");
+    const std::string s_fg_magenta = std::string("\033[1;35m");
+    const std::string s_fg_cyan = std::string("\033[1;36m");
+    const std::string s_fg_white = std::string("\033[1;37m");
+    const std::string s_fg_default = std::string("\033[1;39m");
+
+    const std::string s_bg_black = std::string("\033[1;40m");
+    const std::string s_bg_red = std::string("\033[1;41m");
+    const std::string s_bg_green = std::string("\033[1;42m");
+    const std::string s_bg_yellow = std::string("\033[1;43m");
+    const std::string s_bg_blue = std::string("\033[1;44m");
+    const std::string s_bg_magenta = std::string("\033[1;45m");
+    const std::string s_bg_cyan = std::string("\033[1;46m");
+    const std::string s_bg_white = std::string("\033[1;47m");
+    const std::string s_bg_default = std::string("\033[1;49m");
+
+    const std::string s_reset = std::string("\033[1;0m"); // Resets styles
+    const std::string s_bold = std::string("\033[1;1m"); // makes it bold/bright, this is often a brighter shade of the same color
+    const std::string s_bright = std::string("\033[1;1m"); // makes it bold/bright, this is often a brighter shade of the same color
+    const std::string s_underline = std::string("\033[1;4m");
+    const std::string s_underlined = std::string("\033[1;4m");
+    const std::string s_crossed = std::string("\033[1;9m");
+    const std::string s_crossed_out = std::string("\033[1;9m");
+    const std::string s_blink = std::string("\033[1;5m");
+    const std::string s_blink_slow = std::string("\033[1;5m");
+    const std::string s_blink_fast = std::string("\033[1;6m"); // Not widely supported
+    const std::string s_overline = std::string("\033[1;53m");
+    const std::string s_overlined = std::string("\033[1;53m");
+    const std::string s_inverse = std::string("\033[1;7m"); // Swap foreground and background colors
+    const std::string s_bold_off = std::string("\033[1;21m");
+    const std::string s_bright_off = std::string("\033[1;21m"); // May underline
+    const std::string s_underline_off = std::string("\033[1;24m");
+    const std::string s_underlined_off = std::string("\033[1;24m");
+    const std::string s_inverse_off = std::string("\033[1;27m");
+    const std::string s_crossed_off = std::string("\033[1;29m");
+    const std::string s_crossed_out_off = std::string("\033[1;29m");
+    const std::string s_blink_off = std::string("\033[1;25m");
+    const std::string s_overline_off = std::string("\033[1;55m");
+    const std::string s_overlined_off = std::string("\033[1;55m");
+    const std::string s_intensity_normal = std::string("\033[1;21m"); // May underline
+    const std::string s_intensity_increased = std::string("\033[1;1m");
+    const std::string s_intensity_decreased = std::string("\033[1;2m"); // Light font weight
+
     const char* newline = "\n";
     const wchar_t* w_newline = L"\n";
+    const std::string s_newline = std::string("\n");
+
     const char* upline = "\x1b[A";
     const wchar_t* w_upline = L"\x1b[A";
+    const std::string s_upline = std::string("\x1b[A");
 
     const char* clearline = "\033[2K";
     const wchar_t* w_clearline = L"\033[2K";
+    const std::string s_clearline = std::string("\033[2K");
 
     const char* clear = "\033c";
     const wchar_t* w_clear = L"\033c";
+    const std::string clear = std::string("\033c");
 
     void resetconsole() {
         std::cout << ansi::reset;
