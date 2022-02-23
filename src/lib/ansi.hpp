@@ -158,7 +158,7 @@ namespace ansi {
 
     const char* clear = "\033c";
     const wchar_t* w_clear = L"\033c";
-    const std::string clear = std::string("\033c");
+    const std::string s_clear = std::string("\033c");
 
     void resetconsole() {
         std::cout << ansi::reset;
