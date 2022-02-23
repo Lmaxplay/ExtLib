@@ -164,5 +164,3 @@ namespace ansi {
         std::cout << ansi::reset;
     }
 }
-
-// TODO: Add String variants
