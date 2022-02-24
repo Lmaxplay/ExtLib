@@ -2,8 +2,9 @@
 #include <string.h>
 #include "ansi.hpp"
 
-#error "Library deprecated"
-
+#ifndef COUT_DECPRECATED_BYPASS
+#error Library deprecated, use COUT_DEPRECATED_BYPASS to bypass this error
+#endif
 namespace ecout {
     struct _coutbase {
     public:

@@ -13,6 +13,7 @@
 // #include "lib/getExecutableName.h" // Currently unused
 #include "lib/ansi.hpp"
 #include "lib/vector.hpp"
+#include "lib/cout.hpp"
 // #include "lib/time.hpp"
 // #include "lib/sleep.hpp"
 
