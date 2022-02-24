@@ -1,3 +1,5 @@
+#ifndef ANSIHPP
+#define ANSIHPP
 #include <iosfwd>
 #include <string>
 
@@ -164,3 +166,5 @@ namespace ansi {
         std::cout << ansi::reset;
     }
 }
+
+#endif
