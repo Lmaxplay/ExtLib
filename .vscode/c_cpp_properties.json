@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Win32-GCC",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
@@ -10,11 +10,9 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "windowsSdkVersion": "10.0.22000.0",
-            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang.exe",
+            "compilerPath": "C:/ProgramData/chocolatey/bin/gcc.exe",
             "cStandard": "c17",
-            "cppStandard": "c++20",
-            "intelliSenseMode": "windows-clang-x64"
+            "cppStandard": "c++20"
         },
         {
             "name": "Linux",
@@ -31,44 +29,6 @@
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "linux-gcc-x64"
-        },
-        {
-            "name": "Win32-Clang",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.22000.0",
-            "compilerArgs": [],
-            "cStandard": "c17",
-            "cppStandard": "c++20",
-            "intelliSenseMode": "windows-clang-x64",
-            "mergeConfigurations": false,
-            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang.exe",
-            "browse": {
-                "path": [
-                    "${workspaceFolder}/**"
-                ],
-                "limitSymbolsToIncludedHeaders": true
-            }
-        },
-        {
-            "name": "Win32-GCC",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "compilerPath": "C:/ProgramData/chocolatey/bin/gcc.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++20"
         },
         {
             "name": "Win32-MSVC",

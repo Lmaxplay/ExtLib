@@ -1,5 +1,5 @@
 #include <iostream> // Allow IO
-#include <filesystem> // Filesystem access
+// #include <filesystem> // Filesystem access
 // #include <fstream> // Filestream
 // #include <string> // string related functions
 // #include <limits> // Limits
@@ -13,7 +13,6 @@
 // #include "lib/getExecutableName.h" // Currently unused
 #include "lib/ansi.hpp"
 #include "lib/vector.hpp"
-#include "lib/cout.hpp"
 // #include "lib/time.hpp"
 // #include "lib/sleep.hpp"
 
@@ -27,6 +26,8 @@ void clearconsole() {
 // Main function
 int main() {
     std::atexit(clearconsole);
+
+    Vec4<uint32_t>;
 
     std::cout << ansi::fg_red << "Text." << ansi::newline;
 

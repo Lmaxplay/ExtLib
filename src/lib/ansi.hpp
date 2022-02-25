@@ -162,6 +162,7 @@ namespace ansi {
     const wchar_t* w_clear                   = L"\033c";
     const std::string s_clear                = std::string("\033c");
 
+    // Resets the console
     void resetconsole() {
         std::cout << ansi::reset;
     }
