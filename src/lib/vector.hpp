@@ -1,3 +1,5 @@
+#ifndef VECTORHPP
+#define VECTORHPP
 #include <iosfwd>
 #include <math.h>
 #include <any>
@@ -286,3 +288,5 @@ using vec4ll = Vec4<long long>;
 using vec4f  = Vec4<float>;
 using vec4d  = Vec4<double>;
 using vec4ld = Vec4<long double>;
+
+#endif
