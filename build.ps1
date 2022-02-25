@@ -250,5 +250,3 @@ try {
     $Error.Clear()
     Set-Location $LocationPath
 }
-
-Add-Type -AssemblyName System.Core
