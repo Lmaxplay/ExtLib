@@ -94,6 +94,26 @@
         "C_Cpp.default.cppStandard": "c++20",
         "C_Cpp.default.cStandard": "c17",
         "C_Cpp.default.windowsSdkVersion": "10.0.22000.0",
-        "C_Cpp.default.compilerPath": ""
+        "C_Cpp.default.compilerPath": "",
+        "emeraldwalk.runonsave": {
+            "commands": [
+                {
+                    "match": ".cpp",
+                    "isAsync": true,
+                    "cmd": "pwsh -Command ${workspaceFolder}\\build.ps1"
+                },
+                {
+                    "match": ".hpp",
+                    "isAsync": true,
+                    "cmd": "pwsh -Command ${workspaceFolder}\\build.ps1"
+                },
+                {
+                    "match": ".h",
+                    "isAsync": true,
+                    "cmd": "pwsh -Command ${workspaceFolder}\\build.ps1"
+                }
+            ],
+            "shell": "pwsh"
+        }
     }
 }

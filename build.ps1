@@ -129,8 +129,9 @@ if($PSVersionTable.PSVersion.Major -lt 6) {
 
 $Location = Get-Location
 $LocationPath = $Location.Path
+$Watch = Get-Parameter "Watch"
 
-try {
+function Compile {
     if ($PSVersion -lt $PSMinVersion) {
         Write-Red "You are using PowerShell version $PSVersionFull, which is not officially supported by this script, using PowerShell 7"
         Write-Blue "Running PowerShell 7 to execute script..."
@@ -239,10 +240,15 @@ try {
     }
     Write-White ""
     Set-Location $LocationPath
+}
 
+try {
+    Compile
 } catch {
     Write-Cyan "An error occured"
     Write-Red $Error
     $Error.Clear()
     Set-Location $LocationPath
 }
+
+Add-Type -AssemblyName System.Core
