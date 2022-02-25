@@ -26,8 +26,7 @@ void clearconsole() {
 // Main function
 int main() {
     std::atexit(clearconsole);
-
-    Vec4<uint32_t>;
+    
 
     std::cout << ansi::fg_red << "Text." << ansi::newline;
 
