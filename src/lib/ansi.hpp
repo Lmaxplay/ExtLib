@@ -1,6 +1,6 @@
 #ifndef ANSIHPP
 #define ANSIHPP
-#include <iosfwd>
+
 #include <string>
 
 // ANSI terminal manipulation
@@ -149,7 +149,7 @@ namespace ansi {
     const char* newline                      = "\n";
     const wchar_t* w_newline                 = L"\n";
     const std::string s_newline              = std::string("\n");
-
+    
     const char* upline                       = "\x1b[A";
     const wchar_t* w_upline                  = L"\x1b[A";
     const std::string s_upline               = std::string("\x1b[A");
