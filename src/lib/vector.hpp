@@ -1,11 +1,9 @@
 #ifndef VECTORHPP
 #define VECTORHPP
+#ifndef NOSTD
 #include <iosfwd>
 #include <math.h>
-#include <any>
-#include <stdint.h>
-
-using std::any;
+#endif
 
 /**
  * @brief A vector2
@@ -31,11 +29,16 @@ struct Vec2 {
             return y;
 
             default:
+#ifndef NOSTD
             throw std::out_of_range("Out of range item");
+#else
+            throw "Out of range item";
+#endif
             return x;
         }
     }
 
+#ifndef NOSTD
     inline friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& vec)
     {
         os << vec.x << ", " << vec.y;
@@ -50,7 +53,7 @@ struct Vec2 {
     inline T getmagnitude() {
         return std::sqrt(x * x + y * y);
     }
-
+#endif
 
     template <typename T2>
     inline Vec2(const Vec2<T2> &other) {
@@ -105,11 +108,16 @@ struct Vec3 {
             return z;
 
             default:
+#ifndef NOSTD
             throw std::out_of_range("Out of range item");
+#else
+            throw "Out of range item";
+#endif
             return x;
         }
     }
 
+#ifndef NOSTD
     inline friend std::ostream& operator<<(std::ostream& os, const Vec3<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z;
@@ -124,6 +132,8 @@ struct Vec3 {
     inline T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z);
     }
+#endif
+
 
     template <typename T2>
     inline Vec3(const Vec3<T2> &other) {
@@ -194,17 +204,22 @@ struct Vec4 {
             return w;
 
             default:
+#ifndef NOSTD
             throw std::out_of_range("Out of range item");
+#else
+            throw "Out of range item";
+#endif
             return x;
         }
     }
 
+#ifndef NOSTD
     inline friend std::ostream& operator<<(std::ostream& os, const Vec4<T>& vec)
     {
         os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
         return os;
     }
-    
+ 
     /** 
      * Calculates the magnitude of the vector4
      * 
@@ -213,6 +228,7 @@ struct Vec4 {
     inline T getmagnitude() {
         return std::sqrt(x * x + y * y + z * z + w * w);
     }
+#endif
 
 
     template <typename T2>
