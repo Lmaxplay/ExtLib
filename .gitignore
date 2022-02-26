@@ -1,5 +1,3 @@
 output/app.*
 output/app
 output/*.obj
-
-cppcheck_report.txt
