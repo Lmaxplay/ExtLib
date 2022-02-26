@@ -1,0 +1,53 @@
+src/lib/time.cpp:4:28: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+        std::time_t result = std::time(nullptr);
+                           ^
+src/lib/vector.hpp:18:20: style:inconclusive: Technically the member function 'Vec2::operator+' can be const. [functionConst]
+    inline Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
+                   ^
+src/lib/vector.hpp:19:20: style:inconclusive: Technically the member function 'Vec2::operator-' can be const. [functionConst]
+    inline Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
+                   ^
+src/lib/vector.hpp:21:20: style:inconclusive: Technically the member function 'Vec2::operator/' can be const. [functionConst]
+    inline Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
+                   ^
+src/lib/vector.hpp:94:20: style:inconclusive: Technically the member function 'Vec3::operator+' can be const. [functionConst]
+    inline Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
+                   ^
+src/lib/vector.hpp:95:20: style:inconclusive: Technically the member function 'Vec3::operator-' can be const. [functionConst]
+    inline Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
+                   ^
+src/lib/vector.hpp:97:20: style:inconclusive: Technically the member function 'Vec3::operator/' can be const. [functionConst]
+    inline Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
+                   ^
+src/lib/vector.hpp:187:13: style:inconclusive: Technically the member function 'Vec4::operator+' can be const. [functionConst]
+    Vec4<T> operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
+            ^
+src/lib/vector.hpp:188:13: style:inconclusive: Technically the member function 'Vec4::operator-' can be const. [functionConst]
+    Vec4<T> operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
+            ^
+src/lib/vector.hpp:190:13: style:inconclusive: Technically the member function 'Vec4::operator/' can be const. [functionConst]
+    Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
+            ^
+src/lib/vector.hpp:70:12: style: Struct 'Vec2' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    inline Vec2(const T x) {
+           ^
+src/lib/vector.hpp:160:12: style: Struct 'Vec3' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    inline Vec3(const T x) {
+           ^
+src/lib/vector.hpp:267:12: style: Struct 'Vec4' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
+    inline Vec4(const T x) {
+           ^
+src/lib/getExecutableName.cpp:4:0: style: The function 'getExecutableName' is never used. [unusedFunction]
+
+^
+src/lib/ext/memory.cpp:3:0: style: The function 'getSystemMemory' is never used. [unusedFunction]
+
+^
+src/lib/time.cpp:3:0: style: The function 'getTimeUnix' is never used. [unusedFunction]
+
+^
+src/lib/sleep.cpp:9:0: style: The function 'miliseconds' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingIncludeSystem]
+
