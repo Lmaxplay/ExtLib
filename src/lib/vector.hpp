@@ -15,10 +15,10 @@ struct Vec2 {
     T x;
     T y;
 
-    const inline Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
-    const inline Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
-    const inline Vec2<T> operator * (Vec2<T> other) { return {x * other.x, y * other.y }; };
-    const inline Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
+    const inline Vec2<T> const operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
+    const inline Vec2<T> const operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
+    const inline Vec2<T> const operator * (Vec2<T> other) { return {x * other.x, y * other.y }; };
+    const inline Vec2<T> const operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
 
     inline T& operator [] (int index) {
         switch(index) {
@@ -91,10 +91,10 @@ struct Vec3 {
     T y;
     T z;
 
-    const inline Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
-    const inline Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
-    const inline Vec3<T> operator * (Vec3<T> other) { return {x * other.x, y * other.y, z * other.z }; };
-    const inline Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
+    const inline Vec3<T> const operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
+    const inline Vec3<T> const operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
+    const inline Vec3<T> const operator * (Vec3<T> other) { return {x * other.x, y * other.y, z * other.z }; };
+    const inline Vec3<T> const operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
 
     inline T& operator [] (int index) {
         switch(index) {
@@ -184,10 +184,10 @@ struct Vec4 {
     T z;
     T w;
 
-    const inline Vec4<T> operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
-    const inline Vec4<T> operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
-    const inline Vec4<T> operator * (Vec4<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w }; };
-    const inline Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
+    const inline Vec4<T> const operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
+    const inline Vec4<T> const operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
+    const inline Vec4<T> const operator * (Vec4<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w }; };
+    const inline Vec4<T> const operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
 
     inline T& operator [] (int index) {
         switch(index) {
