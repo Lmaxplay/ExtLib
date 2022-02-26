@@ -25,15 +25,6 @@ src/lib/vector.hpp:188:26: style:inconclusive: Technically the member function '
 src/lib/vector.hpp:190:26: style:inconclusive: Technically the member function 'Vec4::operator/' can be const. [functionConst]
     const inline Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
                          ^
-src/lib/vector.hpp:70:12: style: Struct 'Vec2' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
-    inline Vec2(const T x) {
-           ^
-src/lib/vector.hpp:160:12: style: Struct 'Vec3' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
-    inline Vec3(const T x) {
-           ^
-src/lib/vector.hpp:267:12: style: Struct 'Vec4' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
-    inline Vec4(const T x) {
-           ^
 src/lib/getExecutableName.cpp:4:0: style: The function 'getExecutableName' is never used. [unusedFunction]
 
 ^
