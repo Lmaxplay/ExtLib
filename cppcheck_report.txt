@@ -1,30 +1,30 @@
-src/lib/vector.hpp:18:26: style:inconclusive: Technically the member function 'Vec2::operator+' can be const. [functionConst]
-    const inline Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
-                         ^
-src/lib/vector.hpp:19:26: style:inconclusive: Technically the member function 'Vec2::operator-' can be const. [functionConst]
-    const inline Vec2<T> operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
-                         ^
-src/lib/vector.hpp:21:26: style:inconclusive: Technically the member function 'Vec2::operator/' can be const. [functionConst]
-    const inline Vec2<T> operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
-                         ^
-src/lib/vector.hpp:94:26: style:inconclusive: Technically the member function 'Vec3::operator+' can be const. [functionConst]
-    const inline Vec3<T> operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
-                         ^
-src/lib/vector.hpp:95:26: style:inconclusive: Technically the member function 'Vec3::operator-' can be const. [functionConst]
-    const inline Vec3<T> operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
-                         ^
-src/lib/vector.hpp:97:26: style:inconclusive: Technically the member function 'Vec3::operator/' can be const. [functionConst]
-    const inline Vec3<T> operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
-                         ^
-src/lib/vector.hpp:187:26: style:inconclusive: Technically the member function 'Vec4::operator+' can be const. [functionConst]
-    const inline Vec4<T> operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
-                         ^
-src/lib/vector.hpp:188:26: style:inconclusive: Technically the member function 'Vec4::operator-' can be const. [functionConst]
-    const inline Vec4<T> operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
-                         ^
-src/lib/vector.hpp:190:26: style:inconclusive: Technically the member function 'Vec4::operator/' can be const. [functionConst]
-    const inline Vec4<T> operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
-                         ^
+src/lib/vector.hpp:18:32: style:inconclusive: Technically the member function 'Vec2::operator+' can be const. [functionConst]
+    const inline Vec2<T> const operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
+                               ^
+src/lib/vector.hpp:19:32: style:inconclusive: Technically the member function 'Vec2::operator-' can be const. [functionConst]
+    const inline Vec2<T> const operator - (Vec2<T> other) { return {x - other.x, y - other.y }; };
+                               ^
+src/lib/vector.hpp:21:32: style:inconclusive: Technically the member function 'Vec2::operator/' can be const. [functionConst]
+    const inline Vec2<T> const operator / (Vec2<T> other) { return {x / other.x, y / other.y }; };
+                               ^
+src/lib/vector.hpp:94:32: style:inconclusive: Technically the member function 'Vec3::operator+' can be const. [functionConst]
+    const inline Vec3<T> const operator + (Vec3<T> other) { return {x + other.x, y + other.y, z + other.z }; };
+                               ^
+src/lib/vector.hpp:95:32: style:inconclusive: Technically the member function 'Vec3::operator-' can be const. [functionConst]
+    const inline Vec3<T> const operator - (Vec3<T> other) { return {x - other.x, y - other.y, z - other.z }; };
+                               ^
+src/lib/vector.hpp:97:32: style:inconclusive: Technically the member function 'Vec3::operator/' can be const. [functionConst]
+    const inline Vec3<T> const operator / (Vec3<T> other) { return {x / other.x, y / other.y, z / other.z }; };
+                               ^
+src/lib/vector.hpp:187:32: style:inconclusive: Technically the member function 'Vec4::operator+' can be const. [functionConst]
+    const inline Vec4<T> const operator + (Vec4<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w }; };
+                               ^
+src/lib/vector.hpp:188:32: style:inconclusive: Technically the member function 'Vec4::operator-' can be const. [functionConst]
+    const inline Vec4<T> const operator - (Vec4<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w }; };
+                               ^
+src/lib/vector.hpp:190:32: style:inconclusive: Technically the member function 'Vec4::operator/' can be const. [functionConst]
+    const inline Vec4<T> const operator / (Vec4<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w }; };
+                               ^
 src/lib/getExecutableName.cpp:4:0: style: The function 'getExecutableName' is never used. [unusedFunction]
 
 ^
