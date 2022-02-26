@@ -27,7 +27,9 @@ void clearconsole() {
 int main() {
     std::atexit(clearconsole);
 
-    std::cout << ansi::fg_yellow << "__" << ansi::newline;
+    vec4d testvector = {10, 0, 0, 0};
+
+    std::cout << ansi::fg_magenta << testvector << ansi::newline;
 
     return 0;
 }

@@ -129,7 +129,6 @@ if($PSVersionTable.PSVersion.Major -lt 6) {
 
 $Location = Get-Location
 $LocationPath = $Location.Path
-$Watch = Get-Parameter "Watch"
 
 function Compile {
     if ($PSVersion -lt $PSMinVersion) {
