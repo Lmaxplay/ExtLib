@@ -1,6 +1,3 @@
-src/lib/time.cpp:4:28: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
-        std::time_t result = std::time(nullptr);
-                           ^
 src/lib/vector.hpp:18:20: style:inconclusive: Technically the member function 'Vec2::operator+' can be const. [functionConst]
     inline Vec2<T> operator + (Vec2<T> other) { return {x + other.x, y + other.y }; };
                    ^
