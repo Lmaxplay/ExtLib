@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 $ScriptVersion = "2.2.0"
 
 # Header start
