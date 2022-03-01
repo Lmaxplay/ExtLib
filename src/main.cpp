@@ -27,7 +27,9 @@ void clearconsole() {
 int main() {
     std::atexit(clearconsole);
 
-    std::cout << ansi::fg_magenta << ansi::newline;
+    vec4d testvec;
+
+    std::cout << ansi::fg_magenta << testvec << ansi::newline;
 
     return 0;
 }
