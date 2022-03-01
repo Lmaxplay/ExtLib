@@ -26,4 +26,4 @@ namespace ecout {
     };
 
     _coutbase coutred = _coutbase(ansi::fg_red);
-}
+};
