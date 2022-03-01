@@ -114,6 +114,7 @@
                 }
             ],
             "shell": "pwsh"
-        }
+        },
+        "files.eol": "\n",
     }
 }
