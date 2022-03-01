@@ -27,7 +27,7 @@ void clearconsole() {
 int main() {
     std::atexit(clearconsole);
 
-    std::cout << ansi::fg_magenta  << ansi::newline;
+    std::cout << ansi::fg_magenta << ansi::newline;
 
     return 0;
 }
