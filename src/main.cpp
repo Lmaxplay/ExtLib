@@ -48,8 +48,5 @@ int main() {
 
     std::atexit(ansi::resetconsole);
 
-    long4 typenumbersyntax = {0, 10, 20, 30};
-    vec4l vecnumbertypesyntax = {0, 10, 20, 30};
-
     return 0;
 }
