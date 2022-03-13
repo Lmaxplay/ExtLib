@@ -67,7 +67,7 @@ struct Vec2 {
         return;
     }
 
-    explicit inline Vec2(const T x) {
+    inline Vec2(const T x) {
         this->x = x;
         this->y = (T)0;
         return;
@@ -150,14 +150,14 @@ struct Vec3 {
     }
 
 
-    explicit inline Vec3(const T x, const T y) {
+    inline Vec3(const T x, const T y) {
         this->x = x;
         this->y = y;
         this->z = (T)0;
         return;
     }
 
-    explicit inline Vec3(const T x) {
+    inline Vec3(const T x) {
         this->x = x;
         this->y = (T)0;
         this->z = (T)0;
@@ -247,7 +247,7 @@ struct Vec4 {
         return;
     }
     
-    explicit inline Vec4(const T x, const T y, const T z) {
+    inline Vec4(const T x, const T y, const T z) {
         this->x = x;
         this->y = y;
         this->z = z;
@@ -256,7 +256,7 @@ struct Vec4 {
     }
 
     
-    explicit inline Vec4(const T x, const T y) {
+    inline Vec4(const T x, const T y) {
         this->x = x;
         this->y = y;
         this->z = (T)0;
@@ -264,7 +264,7 @@ struct Vec4 {
         return;
     }
 
-    explicit inline Vec4(const T x) {
+    inline Vec4(const T x) {
         this->x = x;
         this->y = (T)0;
         this->z = (T)0;
