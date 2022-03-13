@@ -68,5 +68,6 @@
         "deque": "cpp",
         "unordered_map": "cpp",
         "string_view": "cpp"
-    }
+    },
+    "files.eol": "\n",
 }

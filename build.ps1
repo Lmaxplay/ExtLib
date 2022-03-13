@@ -191,7 +191,7 @@ function Compile {
         0 {
             Write-Blue "Using GCC on Windows from Chocolatey"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
-            C:/ProgramData/Chocolatey/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
+            C:/ProgramData/Chocolatey/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -static -pthread -g
         }
         1 {
             Write-Blue "Using Clang"
@@ -219,7 +219,7 @@ function Compile {
         switch($Compiler) {
             0 {
                 Write-Blue "Using GCC-11 on Linux"
-                g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -g
+                g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -pthread -lpthread -g
             }
             1 {
                 Write-Blue "Using GCC-system on Linux"

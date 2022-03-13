@@ -305,4 +305,19 @@ using vec4f  = Vec4<float>;
 using vec4d  = Vec4<double>;
 using vec4ld = Vec4<long double>;
 
+using int2  = Vec2<int>;
+using long2  = Vec2<long>;
+using float2  = Vec2<float>;
+using double2  = Vec2<double>;
+
+using int3  = Vec3<int>;
+using long3  = Vec3<long>;
+using float3  = Vec3<float>;
+using double3  = Vec3<double>;
+
+using int4  = Vec4<int>;
+using long4  = Vec4<long>;
+using float4  = Vec4<float>;
+using double4  = Vec4<double>;
+
 #endif
