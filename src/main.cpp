@@ -15,20 +15,14 @@
 // #include "lib/getExecutableName.h" // Currently unused
 #include "lib/ansi.hpp"
 #include "lib/vector.hpp"
-#include "lib/threadcout.hpp"
+#include "lib/thread.hpp"
 // #include "lib/time.hpp"
-// #include "lib/sleep.hpp"
+#include "lib/sleep.hpp"
 
 
 // #include "lib/ext/betterwindows.hpp"
 
-void clearconsole() {
-    ansi::resetconsole();
-}
-
-bool started = false;
-
-void asyncthreadbenchmark(int input) {
+void asyncthreadbenchmark(int input, bool started) {
     while(!started) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -51,13 +45,11 @@ void asyncthreadbenchmark(int input) {
 
 // Main function
 int main() {
-    //// Some old docs
 
-    std::atexit(clearconsole);
+    std::atexit(ansi::resetconsole);
 
-    long4 test = {0, 10, 20, 30};
-    
-    std::cout << test;
+    long4 typenumbersyntax = {0, 10, 20, 30};
+    vec4l vecnumbertypesyntax = {0, 10, 20, 30};
 
     return 0;
 }
