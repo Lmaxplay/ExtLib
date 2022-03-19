@@ -48,5 +48,7 @@ int main() {
 
     std::atexit(ansi::resetconsole);
 
+    std::cout << "hi\n";
+
     return 0;
 }
