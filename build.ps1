@@ -79,7 +79,7 @@ function Write-Blue {
 # Arguments check
 $oargs = $args
 
-function Get-Parameter([String]$param) {
+function Get-Parameter-Value([String]$param) {
     $value = ""
     for ($id = 0; $id -lt $oargs.Length; $id = $id + 1) {
         $itemraw = $oargs[$id]
@@ -114,6 +114,27 @@ function Get-Parameter([String]$param) {
                 if ($prefix -eq $param) {
                     $value = $temp[1]
                 }
+            }
+        }
+    }
+    return $value
+}
+
+
+function Get-Parameter-Defined([String]$param) {
+    $value = $false
+    for ($id = 0; $id -lt $oargs.Length; $id = $id + 1) {
+        $itemraw = $oargs[$id]
+        $item = $itemraw.ToString() # Make sure item is a string
+        if ($item.StartsWith("-") -or $item.StartsWith("/")) {
+            if($item.StartsWith("--")) {
+                $item = $item.Substring(2)
+            } else {
+                $item = $item.Substring(1)
+            }
+
+            if($item -eq $param) {
+                $value = true;
             }
         }
     }
@@ -165,20 +186,20 @@ function Compile {
     # Write-Cyan "Running on PowerShell version $PSVersionFull" ""
 
     
-    $Wall = Get-Parameter "Wall" 
+    $Wall = Get-Parameter-Value "Wall"
     if($Wall -eq "") {$Wall = "0"}
 
-    $Compiler = Get-Parameter "Compiler"
+    $Compiler = Get-Parameter-Value "Compiler"
     if($Compiler -eq "") {$Compiler = "0"}
 
-    $O = Get-Parameter "O"
+    $O = Get-Parameter-Value "O"
     if($O -eq "") {$O = "3"}
 
     if($Wall -eq "0") {$WallOption = ''}
     if($Wall -eq "1") {$WallOption = '-Wall'}
     Write-Cyan 'Running compiler...'
 
-    $Compiler = Get-Parameter "compiler"
+    $Compiler = Get-Parameter-Value "Compiler"
     if($Compiler -eq "") {
         $Compiler = "0"
     }

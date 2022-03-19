@@ -1,0 +1,1 @@
+nodemon --exec "pwsh ./run.ps1" --ext *.cpp *.hpp *.h *.c
