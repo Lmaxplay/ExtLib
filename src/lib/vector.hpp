@@ -170,6 +170,13 @@ struct Vec3 {
         this->z = (T)0;
         return;
     }
+
+    template <typename T2>
+    inline Vec3(const Vec2<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)0;
+    };
 };
 
 /**
@@ -279,6 +286,22 @@ struct Vec4 {
         this->w = (T)0;
         return;
     }
+
+    template <typename T2>
+    inline Vec4(const Vec3<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)0;
+    };
+
+    template <typename T2>
+    inline Vec4(const Vec2<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)0;
+        this->w = (T)0;
+    };
 };
 
 using vec2s  = Vec2<short int>;

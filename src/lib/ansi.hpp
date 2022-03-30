@@ -205,6 +205,11 @@ namespace ansi {
     void resetconsole() {
         std::cout << ansi::reset;
     }
+
+    // Clears the console
+    void clearconsole() {
+        std::cout << ansi::clear;
+    }
 }
 
 #endif
