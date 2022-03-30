@@ -242,6 +242,11 @@ namespace ansi {
     void clearconsole() {
         std::cout << ansi::clear;
     }
+
+    void registeratexit() {
+        // Reset the console when exiting
+        std::atexit(resetconsole);
+    }
 }
 
 #endif
