@@ -5,6 +5,14 @@
 
 // ANSI terminal manipulation
 namespace ansi {
+    const char* black                        = "\033[1;30m";
+    const char* red                          = "\033[1;31m";
+    const char* green                        = "\033[1;32m";
+    const char* yellow                       = "\033[1;33m";
+    const char* blue                         = "\033[1;34m";
+    const char* magenta                      = "\033[1;35m";
+    const char* cyan                         = "\033[1;36m";
+    const char* white                        = "\033[1;37m";
     const char* fg_black                     = "\033[1;30m";
     const char* fg_red                       = "\033[1;31m";
     const char* fg_green                     = "\033[1;32m";
@@ -54,6 +62,14 @@ namespace ansi {
     const char* clearline                    = "\033[2K";
     const char* clear                        = "\033c";
 
+    const wchar_t* w_black                   = L"\033[1;30m";
+    const wchar_t* w_red                     = L"\033[1;31m";
+    const wchar_t* w_green                   = L"\033[1;32m";
+    const wchar_t* w_yellow                  = L"\033[1;33m";
+    const wchar_t* w_blue                    = L"\033[1;34m";
+    const wchar_t* w_magenta                 = L"\033[1;35m";
+    const wchar_t* w_cyan                    = L"\033[1;36m";
+    const wchar_t* w_white                   = L"\033[1;37m";
     const wchar_t* w_fg_black                = L"\033[1;30m";
     const wchar_t* w_fg_red                  = L"\033[1;31m";
     const wchar_t* w_fg_green                = L"\033[1;32m";
@@ -103,6 +119,14 @@ namespace ansi {
     const wchar_t* w_clearline               = L"\033[2K";
     const wchar_t* w_clear                   = L"\033c";
 
+    const std::string s_black                = std::string("\033[30m");
+    const std::string s_red                  = std::string("\033[31m");
+    const std::string s_green                = std::string("\033[32m");
+    const std::string s_yellow               = std::string("\033[33m");
+    const std::string s_blue                 = std::string("\033[34m");
+    const std::string s_magenta              = std::string("\033[35m");
+    const std::string s_cyan                 = std::string("\033[36m");
+    const std::string s_white                = std::string("\033[37m");
     const std::string s_fg_black             = std::string("\033[30m");
     const std::string s_fg_red               = std::string("\033[31m");
     const std::string s_fg_green             = std::string("\033[32m");
@@ -152,6 +176,14 @@ namespace ansi {
     const std::string s_clearline            = std::string("\033[2K");
     const std::string s_clear                = std::string("\033c");
 
+    const std::wstring ws_black               = std::wstring(L"\033[30m");
+    const std::wstring ws_red                 = std::wstring(L"\033[31m");
+    const std::wstring ws_green               = std::wstring(L"\033[32m");
+    const std::wstring ws_yellow              = std::wstring(L"\033[33m");
+    const std::wstring ws_blue                = std::wstring(L"\033[34m");
+    const std::wstring ws_magenta             = std::wstring(L"\033[35m");
+    const std::wstring ws_cyan                = std::wstring(L"\033[36m");
+    const std::wstring ws_white               = std::wstring(L"\033[37m");
     const std::wstring ws_fg_black            = std::wstring(L"\033[30m");
     const std::wstring ws_fg_red              = std::wstring(L"\033[31m");
     const std::wstring ws_fg_green            = std::wstring(L"\033[32m");

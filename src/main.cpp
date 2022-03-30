@@ -19,11 +19,18 @@
 // #include "lib/time.hpp"
 #include "lib/sleep.hpp"
 
+// Pi constant
+const double pi = 3.14159265358979323846;
 
 // Main function
 int main() {
 
     std::atexit(ansi::resetconsole);
+
+    // Cout a bold red string
+    std::cout << ansi::bold << ansi::red << "Hello World!" << ansi::reset << std::endl;
+    // Cout a bold green string
+    std::cout << ansi::bold << ansi::green << "Hello World!" << ansi::reset << std::endl;
 
     std::cout << "hi\n";
 
