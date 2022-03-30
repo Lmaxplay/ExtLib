@@ -1,5 +1,6 @@
 #ifndef VECTORHPP
 #define VECTORHPP
+#define _USE_MATH_DEFINES
 #include <iosfwd>
 #include <math.h>
 
@@ -104,7 +105,7 @@ struct Vec2 {
     }
     
     // Returns the angle between two vectors in degrees
-    inline T angle_deg(const Vec5<T> &other) {
+    inline T angle_deg(const Vec2<T> &other) {
         return std::acos(dot(other) / (magnitude() * other.magnitude())) * 180 / M_PI;
     }
 
@@ -234,7 +235,7 @@ struct Vec3 {
     }
     
     // Returns the angle between two vectors in degrees
-    inline T angle_deg(const Vec5<T> &other) {
+    inline T angle_deg(const Vec3<T> &other) {
         return std::acos(dot(other) / (magnitude() * other.magnitude())) * 180 / M_PI;
     }
 };
@@ -390,7 +391,7 @@ struct Vec4 {
     }
     
     // Returns the angle between two vectors in degrees
-    inline T angle_deg(const Vec5<T> &other) {
+    inline T angle_deg(const Vec4<T> &other) {
         return std::acos(dot(other) / (magnitude() * other.magnitude())) * 180 / M_PI;
     }
 };
@@ -474,6 +475,7 @@ struct Vec5 {
         this->y = y;
         this->z = z;
         this->w = (T)0;
+        this->t = (T)0;
         return;
     }
 
@@ -483,6 +485,7 @@ struct Vec5 {
         this->y = y;
         this->z = (T)0;
         this->w = (T)0;
+        this->t = (T)0;
         return;
     }
 
@@ -499,6 +502,7 @@ struct Vec5 {
         this->y = (T)0;
         this->z = (T)0;
         this->w = (T)0;
+        this->t = (T)0;
         return;
     }
 
@@ -576,6 +580,221 @@ struct Vec5 {
     }
 };
 
+template <typename T>
+struct Vec6 {
+    T x;
+    T y;
+    T z;
+    T w;
+    T t;
+    T u;
+    
+    inline const Vec6<T> operator + (Vec6<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w, t + other.t, u + other.u }; };
+    inline const Vec6<T> operator - (Vec6<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w, t - other.t, u - other.u }; };
+    inline const Vec6<T> operator * (Vec6<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w, t * other.t, u * other.u }; };
+    inline const Vec6<T> operator / (Vec6<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w, t / other.t, u / other.u }; };
+
+    inline T& operator [] (int index) {
+        switch(index) {
+            case 0:
+            return x;
+
+            case 1:
+            return y;
+
+            case 2:
+            return z;
+            
+            case 3:
+            return w;
+
+            case 4:
+            return t;
+
+            case 5:
+            return u;
+
+            default:
+            throw std::out_of_range("Out of range item");
+            return x;
+        }
+    }
+
+    inline friend std::ostream& operator<<(std::ostream& os, const Vec6<T>& vec)
+    {
+        os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ", " << vec.t << ", " << vec.u;
+        return os;
+    }
+
+
+    template <typename T2>
+    inline Vec6(const Vec6<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)other.w;
+        this->t = (T)other.t;
+        this->u = (T)other.u;
+    }; 
+    
+    inline Vec6(const T x, const T y, const T z, const T w, const T t, const T u) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+        this->t = t;
+        this->u = u;
+        return;
+    }
+
+    inline Vec6(const T x, const T y, const T z, const T w, const T t) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+        this->t = t;
+        this->u = (T)0;
+        return;
+    }
+
+    inline Vec6(const T x, const T y, const T z, const T w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+        this->t = (T)0;
+        this->u = (T)0;
+        return;
+    }
+    
+    inline Vec6(const T x, const T y, const T z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+        return;
+    }
+
+    
+    inline Vec6(const T x, const T y) {
+        this->x = x;
+        this->y = y;
+        this->z = (T)0;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+        return;
+    }
+
+    inline Vec6(const T x) {
+        this->x = x;
+        this->y = (T)0;
+        this->z = (T)0;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+        return;
+    }
+
+    inline Vec6() {
+        this->x = (T)0;
+        this->y = (T)0;
+        this->z = (T)0;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+        return;
+    }
+
+    template <typename T2>
+    inline Vec6(const Vec5<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)other.w;
+        this->t = (T)other.t;
+        this->u = (T)0;
+    };
+
+    template <typename T2>
+    inline Vec6(const Vec4<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)other.w;
+        this->t = (T)0;
+        this->u = (T)0;
+    };
+
+    template <typename T2>
+    inline Vec6(const Vec3<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)other.z;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+    };
+
+    template <typename T2>
+    inline Vec6(const Vec2<T2> &other) {
+        this->x = (T)other.x;
+        this->y = (T)other.y;
+        this->z = (T)0;
+        this->w = (T)0;
+        this->t = (T)0;
+        this->u = (T)0;
+    };
+
+    // Returns the dot product of two vectors
+    inline T dot(const Vec6<T> &other) {
+        return x * other.x + y * other.y + z * other.z + w * other.w + t * other.t + u * other.u;
+    }
+
+    // Returns the cross product of two vectors
+    inline Vec6<T> cross(const Vec6<T> &other) {
+        return {y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, w * other.w, t * other.t, u * other.u};
+    }
+    
+    // Returns the magnitude of the vector
+    inline T magnitude() {
+        return std::sqrt(x * x + y * y + z * z + w * w + t * t + u * u);
+    }
+    
+    // Returns the normalized vector
+    inline Vec6<T> normalize() {
+        T mag = magnitude();
+        return {x / mag, y / mag, z / mag, w / mag, t / mag, u / mag};
+    }
+
+    // Returns the length of the vector
+    inline T length() {
+        return std::sqrt(x * x + y * y + z * z + w * w + t * t + u * u);
+    }
+
+    // Returns the distance between two vectors
+    inline T distance(const Vec6<T> &other) {
+        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2) + std::pow(z - other.z, 2) + std::pow(w - other.w, 2) + std::pow(t - other.t, 2) + std::pow(u - other.u, 2));
+    }
+
+    // Returns the angle between two vectors
+    inline T angle(const Vec6<T> &other) {
+        return std::acos(dot(other) / (magnitude() * other.magnitude()));
+    }
+
+    // Returns the angle between two vectors in radians
+    inline T angle_rad(const Vec6<T> &other) {
+        return std::acos(dot(other) / (magnitude() * other.magnitude()));
+    }
+
+    // Returns the angle between two vectors in degrees
+    inline T angle_deg(const Vec6<T> &other) {
+        return std::acos(dot(other) / (magnitude() * other.magnitude())) * 180 / M_PI;
+    }
+};
+
 using vec2s  = Vec2<short int>;
 using vec2i  = Vec2<int>;
 using vec2l  = Vec2<long>;
@@ -628,6 +847,19 @@ using vec5ui = Vec5<unsigned int>;
 using vec5ul = Vec5<unsigned long>;
 using vec5ull = Vec5<unsigned long long>;
 
+using vec6s  = Vec6<short int>;
+using vec6i  = Vec6<int>;
+using vec6l  = Vec6<long>;
+using vec6ll = Vec6<long long>;
+using vec6f  = Vec6<float>;
+using vec6d  = Vec6<double>;
+using vec6ld = Vec6<long double>;
+using vec6c  = Vec6<char>;
+using vec6uc = Vec6<unsigned char>;
+using vec6ui = Vec6<unsigned int>;
+using vec6ul = Vec6<unsigned long>;
+using vec6ull = Vec6<unsigned long long>;
+
 using int2  = Vec2<int>;
 using long2  = Vec2<long>;
 using float2  = Vec2<float>;
@@ -651,5 +883,11 @@ using long5  = Vec5<long>;
 using float5  = Vec5<float>;
 using double5  = Vec5<double>;
 using long_double5 = Vec5<long double>;
+
+using int6  = Vec6<int>;
+using long6  = Vec6<long>;
+using float6  = Vec6<float>;
+using double6  = Vec6<double>;
+using long_double6 = Vec6<long double>;
 
 #endif
