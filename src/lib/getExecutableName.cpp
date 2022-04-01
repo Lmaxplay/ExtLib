@@ -1,7 +1,7 @@
 #include <string>
 #include <windows.h>
 
-std::string getExecutableName()
+std::wstring getExecutableName()
 {
 #if defined(PLATFORM_POSIX) || defined(__linux__) //check defines for your setup
 
@@ -10,8 +10,8 @@ std::string getExecutableName()
     return sp;
 
 #elif defined(_WIN32)
-    char buf[MAX_PATH];
-    GetModuleFileNameA(nullptr, buf, MAX_PATH);
+    wchar_t buf[MAX_PATH];
+    GetModuleFileNameW(nullptr, buf, MAX_PATH);
     return buf;
 
 #else

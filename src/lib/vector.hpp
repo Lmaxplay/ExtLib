@@ -795,6 +795,8 @@ struct Vec6 {
     }
 };
 
+
+
 using vec2s  = Vec2<short int>;
 using vec2i  = Vec2<int>;
 using vec2l  = Vec2<long>;
@@ -859,6 +861,75 @@ using vec6uc = Vec6<unsigned char>;
 using vec6ui = Vec6<unsigned int>;
 using vec6ul = Vec6<unsigned long>;
 using vec6ull = Vec6<unsigned long long>;
+
+
+
+using vector2s  = Vec2<short int>;
+using vector2i  = Vec2<int>;
+using vector2l  = Vec2<long>;
+using vector2ll = Vec2<long long>;
+using vector2f  = Vec2<float>;
+using vector2d  = Vec2<double>;
+using vector2ld = Vec2<long double>;
+using vector2c  = Vec2<char>;
+using vector2uc = Vec2<unsigned char>;
+using vector2ui = Vec2<unsigned int>;
+using vector2ul = Vec2<unsigned long>;
+using vector2ull = Vec2<unsigned long long>;
+
+using vector3s  = Vec3<short int>;
+using vector3i  = Vec3<int>;
+using vector3l  = Vec3<long>;
+using vector3ll = Vec3<long long>;
+using vector3f  = Vec3<float>;
+using vector3d  = Vec3<double>;
+using vector3ld = Vec3<long double>;
+using vector3c  = Vec3<char>;
+using vector3uc = Vec3<unsigned char>;
+using vector3ui = Vec3<unsigned int>;
+using vector3ul = Vec3<unsigned long>;
+using vector3ull = Vec3<unsigned long long>;
+
+using vector4s  = Vec4<short int>;
+using vector4i  = Vec4<int>;
+using vector4l  = Vec4<long>;
+using vector4ll = Vec4<long long>;
+using vector4f  = Vec4<float>;
+using vector4d  = Vec4<double>;
+using vector4ld = Vec4<long double>;
+using vector4c  = Vec4<char>;
+using vector4uc = Vec4<unsigned char>;
+using vector4ui = Vec4<unsigned int>;
+using vector4ul = Vec4<unsigned long>;
+using vector4ull = Vec4<unsigned long long>;
+
+using vector5s  = Vec5<short int>;
+using vector5i  = Vec5<int>;
+using vector5l  = Vec5<long>;
+using vector5ll = Vec5<long long>;
+using vector5f  = Vec5<float>;
+using vector5d  = Vec5<double>;
+using vector5ld = Vec5<long double>;
+using vector5c  = Vec5<char>;
+using vector5uc = Vec5<unsigned char>;
+using vector5ui = Vec5<unsigned int>;
+using vector5ul = Vec5<unsigned long>;
+using vector5ull = Vec5<unsigned long long>;
+
+using vector6s  = Vec6<short int>;
+using vector6i  = Vec6<int>;
+using vector6l  = Vec6<long>;
+using vector6ll = Vec6<long long>;
+using vector6f  = Vec6<float>;
+using vector6d  = Vec6<double>;
+using vector6ld = Vec6<long double>;
+using vector6c  = Vec6<char>;
+using vector6uc = Vec6<unsigned char>;
+using vector6ui = Vec6<unsigned int>;
+using vector6ul = Vec6<unsigned long>;
+using vector6ull = Vec6<unsigned long long>;
+
+
 
 using int2  = Vec2<int>;
 using long2  = Vec2<long>;

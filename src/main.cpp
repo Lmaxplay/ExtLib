@@ -20,12 +20,13 @@ const double pi = 3.14159265358979323846;
 using std::wcout;
 using std::endl;
 
+
 // Main function
 int main() {
-    
+
     std::atexit(ansi::resetconsole);
 
-    std::cout << "hi\n";
+    std::cout << 'a' + 'b' << endl;
 
     return 0;
 }
