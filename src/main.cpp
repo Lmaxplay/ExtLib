@@ -26,7 +26,16 @@ int main() {
 
     std::atexit(ansi::resetconsole);
 
-    std::cout << 'a' + 'b' << endl;
+    double6 thing = {102, 305, 507, 231, 694, 876};
+
+    std::cout << "thing: (" << thing << ")" << std::endl;
+
+    std::cout << "thing[0]: " << thing[0] << std::endl;
+    std::cout << "thing[1]: " << thing[1] << std::endl;
+    std::cout << "thing[2]: " << thing[2] << std::endl;
+    std::cout << "thing[3]: " << thing[3] << std::endl;
+    std::cout << "thing[4]: " << thing[4] << std::endl;
+    std::cout << "thing[5]: " << thing[5] << std::endl;
 
     return 0;
 }
