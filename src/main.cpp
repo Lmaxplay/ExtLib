@@ -16,11 +16,6 @@
 // Pi constant
 const double pi = 3.14159265358979323846;
 
-// use std::wcout instead of std::cout
-using std::wcout;
-using std::endl;
-
-
 // Main function
 int main() {
 
