@@ -311,7 +311,7 @@ namespace ansi {
         const std::wstring ws_cyan = L"\033[36m";
         const std::wstring ws_white = L"\033[37m";
 
-        void hex256(short int color) {
+        void hex256(unsigned char color) {
             if (color < 0) {
                 color = 0;
             }
@@ -377,21 +377,25 @@ namespace ansi {
         // Reset the console when exiting
         std::atexit(resetconsole);
     }
-
-    void setcolor(char color) {
-        std::cout << color;
+    
+    void setColor(unsigned char color) {
+        if (color < 0) {
+            color = 0;
+        }
+        if (color > 255) {
+            color = 255;
+        }
+        std::cout << "\033[38;5;" << color << "m";
     }
-
-    void setcolor(wchar_t color) {
-        std::wcout << color;
-    }
-
-    void setcolor(std::string color) {
-        std::cout << color;
-    }
-
-    void setcolor(std::wstring color) {
-        std::wcout << color;
+    
+    void setForeground(unsigned char color) {
+        if (color < 0) {
+            color = 0;
+        }
+        if (color > 255) {
+            color = 255;
+        }
+        std::cout << "\033[38;5;" << (short int)color << "m";
     }
 }
 
