@@ -388,6 +388,29 @@ namespace ansi {
         std::cout << "\033[38;5;" << (short int)color << "m";
     }
 
+    void setColor(unsigned char red, unsigned char green, unsigned char blue) {
+        if (red < 0) {
+            red = 0;
+        }
+        if (red > 255) {
+            red = 255;
+        }
+        if (green < 0) {
+            green = 0;
+        }
+        if (green > 255) {
+            green = 255;
+        }
+        if (blue < 0) {
+            blue = 0;
+        }
+        if (blue > 255) {
+            blue = 255;
+        }
+
+        std::cout << "\033[38;2;" << (short int)red << ";" << (short int)green << ";" << (short int)blue << "m";
+    }
+
     void setForeground(unsigned char color) {
         if (color < 0) {
             color = 0;
@@ -396,6 +419,29 @@ namespace ansi {
             color = 255;
         }
         std::cout << "\033[38;5;" << (short int)color << "m";
+    }
+
+    void setForeground(unsigned char red, unsigned char green, unsigned char blue) {
+        if (red < 0) {
+            red = 0;
+        }
+        if (red > 255) {
+            red = 255;
+        }
+        if (green < 0) {
+            green = 0;
+        }
+        if (green > 255) {
+            green = 255;
+        }
+        if (blue < 0) {
+            blue = 0;
+        }
+        if (blue > 255) {
+            blue = 255;
+        }
+
+        std::cout << "\033[38;2;" << (short int)red << ";" << (short int)green << ";" << (short int)blue << "m";
     }
 
     
@@ -407,6 +453,29 @@ namespace ansi {
             color = 255;
         }
         std::cout << "\033[48;5;" << (short int)color << "m";
+    }
+
+    void setBackground(unsigned char red, unsigned char green, unsigned char blue) {
+        if (red < 0) {
+            red = 0;
+        }
+        if (red > 255) {
+            red = 255;
+        }
+        if (green < 0) {
+            green = 0;
+        }
+        if (green > 255) {
+            green = 255;
+        }
+        if (blue < 0) {
+            blue = 0;
+        }
+        if (blue > 255) {
+            blue = 255;
+        }
+
+        std::cout << "\033[48;2;" << (short int)red << ";" << (short int)green << ";" << (short int)blue << "m";
     }
 }
 
