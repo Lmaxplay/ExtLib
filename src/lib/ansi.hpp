@@ -377,7 +377,7 @@ namespace ansi {
         // Reset the console when exiting
         std::atexit(resetconsole);
     }
-    
+
     void setColor(unsigned char color) {
         if (color < 0) {
             color = 0;
@@ -385,9 +385,9 @@ namespace ansi {
         if (color > 255) {
             color = 255;
         }
-        std::cout << "\033[38;5;" << color << "m";
+        std::cout << "\033[38;5;" << (short int)color << "m";
     }
-    
+
     void setForeground(unsigned char color) {
         if (color < 0) {
             color = 0;
@@ -396,6 +396,17 @@ namespace ansi {
             color = 255;
         }
         std::cout << "\033[38;5;" << (short int)color << "m";
+    }
+
+    
+    void setBackground(unsigned char color) {
+        if (color < 0) {
+            color = 0;
+        }
+        if (color > 255) {
+            color = 255;
+        }
+        std::cout << "\033[48;5;" << (short int)color << "m";
     }
 }
 

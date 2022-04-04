@@ -21,9 +21,8 @@ const double pi = 3.14159265358979323846;
 int main() {
 
     std::atexit(ansi::resetconsole);
-    
-    // Set foreground to color 24
-    ansi::setForeground(24);
+
+    ansi::setForeground(213);
 
     double6 thing = double5(102, 305, 507, 231, 694);
 
