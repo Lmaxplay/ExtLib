@@ -32,7 +32,9 @@ int main() {
         bytes[1] = (n >> 16) & 0xFF;
         bytes[2] = (n >> 8) & 0xFF;
         bytes[3] = n & 0xFF;
-        ansi::setColor(bytes[0], bytes[1], bytes[2]);
+        std::cout << bytes;
+
+        ansi::setColor(bytes[3], bytes[2], bytes[1]);
 
 
         std::cout << std::string("X");// << (short int)i << " ";

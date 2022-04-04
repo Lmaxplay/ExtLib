@@ -17,60 +17,6 @@ if ($IsWindows) {
 $PreviousColor = 'White'
 $Host.UI.RawUI.ForegroundColor = $PreviousColor
 
-function Write-Green {
-    $Host.UI.RawUI.ForegroundColor = 'Green'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Yellow {
-    $Host.UI.RawUI.ForegroundColor = 'Yellow'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Red {
-    $Host.UI.RawUI.ForegroundColor = 'Red'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Purple {
-    $Host.UI.RawUI.ForegroundColor = 'DarkMagenta'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Magenta {
-    $Host.UI.RawUI.ForegroundColor = 'Magenta'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-White {
-    $Host.UI.RawUI.ForegroundColor = 'White'
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Black {
-    $Host.UI.RawUI.ForegroundColor = "Black"
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Cyan {
-    $Host.UI.RawUI.ForegroundColor = "Cyan"
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
-function Write-Blue {
-    $Host.UI.RawUI.ForegroundColor = "Blue"
-    Write-Output $args
-    $Host.UI.RawUI.ForegroundColor = $PreviousColor # Restore the previous foreground color    
-}
-
 # Unused values under here
 # $IncludePath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
 
@@ -154,38 +100,36 @@ $LocationPath = $Location.Path
 
 function Compile {
     if ($PSVersion -lt $PSMinVersion) {
-        Write-Red "You are using PowerShell version $PSVersionFull, which is not officially supported by this script, using PowerShell 7"
-        Write-Blue "Running PowerShell 7+ to execute script..."
+        Write-Host -ForegroundColor Red "You are using PowerShell version $PSVersionFull, which is not officially supported by this script, using PowerShell 7"
+        Write-Host -ForegroundColor Blue "Running PowerShell 7+ to execute script..."
         $InvocationName = "./build"
         $PowerShell7Exists = Test-Path "C:\Program Files\powershell\"
         if ($PowerShell7Exists -eq $False) {
             if($IsWindows -and [System.Environment]::OSVersion.Version.Major -ge 10) {
-                Write-Red "PowerShell 7 not found"
-                Write-Blue "Installing PowerShell 7 using WinGet"
+                Write-Host -ForegroundColor Red "PowerShell 7 not found"
+                Write-Host -ForegroundColor Blue "Installing PowerShell 7 using WinGet"
                 WinGet install Microsoft.PowerShell
             } elseif ($IsWindows) {
-                Write-Red "Unable to install PowerShell since you don't have WinGet"
+                Write-Host -ForegroundColor Red "Unable to install PowerShell since you don't have WinGet"
             } elseif($IsLinux) {
-                Write-Red "WARNING: Unable to automatically install PowerShell 7+ on linux, please install it using your package manager to continue"
+                Write-Host -ForegroundColor Red "WARNING: Unable to automatically install PowerShell 7+ on linux, please install it using your package manager to continue"
             }
         }
         try {
             pwsh.exe -Command "./$InvocationName $args" 
-            Write-Green 'Run "pwsh" to use PowerShell 7+'
+            Write-Host -ForegroundColor Green 'Run "pwsh" to use PowerShell 7+'
             exit
         } catch {
-            Write-Red "PowerShell 7+ doesn't seem to be installed, please install it at https://aka.ms/PSWindows to use this"
+            Write-Host -ForegroundColor Red "PowerShell 7+ doesn't seem to be installed, please install it at https://aka.ms/PSWindows to use this"
             exit
         }
     }
 
 
-    Write-Green "Lmaxplay CPP build script $ScriptVersion" 'Licensed under the MIT License' 'Copyright 2022 Lmaxplay' ""
+    Write-Host -ForegroundColor Green "Lmaxplay CPP build script $ScriptVersion"
+    Write-Host -ForegroundColor Green 'Licensed under MIT'
+    Write-Host -ForegroundColor Green 'Copyright 2022 Lmaxplay'
 
-    # TODO Possibly re-add this as an argument?
-    # Write-Cyan "Running on PowerShell version $PSVersionFull" ""
-
-    
     $Wall = Get-Parameter-Value "Wall"
     if($Wall -eq "") {$Wall = "0"}
 
@@ -197,7 +141,7 @@ function Compile {
 
     if($Wall -eq "0") {$WallOption = ''}
     if($Wall -eq "1") {$WallOption = '-Wall'}
-    Write-Cyan 'Running compiler...'
+    Write-Host -ForegroundColor Cyan 'Running compiler...'
 
     $Compiler = Get-Parameter-Value "Compiler"
     if($Compiler -eq "") {
@@ -210,22 +154,22 @@ function Compile {
     if ($IsWindows) {
         switch($Compiler) {
         0 {
-            Write-Blue "Using GCC on Windows from Chocolatey"
+            Write-Host -ForegroundColor Blue "Using GCC on Windows from Chocolatey"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
             C:/ProgramData/Chocolatey/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -static -pthread -g
         }
         1 {
-            Write-Blue "Using Clang"
+            Write-Host -ForegroundColor Blue "Using Clang"
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/Llvm/x64/bin/clang++.exe -masm=intel -std=c++20 $OOption $WallOption -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I$IncludePath -o 'output/app.exe' 'src/**.cpp' 'src/lib/**.cpp'# -g
         }
         2 {
-            Write-Blue "Using MSVC"
+            Write-Host -ForegroundColor Blue "Using MSVC"
             if($O -eq "3") {$O = "2"}
             $OOption = "-O$O"
             C:/"Program Files"/"Microsoft Visual Studio"/"2022"/Community/VC/Tools/MSVC/14.30.30705/bin/Hostx64/x64/cl -Zi -DDEBUG -Fe:'output/app.exe' -std:c++20 $OOption $WallOption -nologo -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/ucrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/winrt" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/shared" -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/cppwinrt" 'src/*.cpp' 'src/lib/*.cpp' -EHsc -Fo:"output/" -Fd:"output/app.output.pdb" /link -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\lib\x64' -LIBPATH:'C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22000.0\um\x64' -LIBPATH:'C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22000.0\ucrt\x64'
         }
         3 {
-            Write-Blue "Using GCC on Windows from MSYS2"
+            Write-Host -ForegroundColor Blue "Using GCC on Windows from MSYS2"
             # Includepath = "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/"
             if($env:Path.Contains("C:/msys64/mingw64/bin") -eq $false) {
                 $env:Path += ';C:/msys64/mingw64/bin'
@@ -233,52 +177,52 @@ function Compile {
             C:/msys64/mingw64/bin/g++.exe -std=c++20 $OOption $WallOption -I$IncludePath -o"./output/app.exe" "$LocationPath/src/main.cpp" -g
         }
         default {
-            Write-Blue "Invalid compiler, Compiler number $Compiler is not configured"
+            Write-Host -ForegroundColor Blue "Invalid compiler, Compiler number $Compiler is not configured"
         }
     }
     } elseif ($IsLinux) {
         switch($Compiler) {
             0 {
-                Write-Blue "Using GCC-11 on Linux"
+                Write-Host -ForegroundColor Blue "Using GCC-11 on Linux"
                 g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -pthread -lpthread -g
             }
             1 {
-                Write-Blue "Using GCC-system on Linux"
+                Write-Host -ForegroundColor Blue "Using GCC-system on Linux"
                 g++-11 -std=c++20 $OOption $WallOption -o 'output/app' "./src/main.cpp" -g
             }
             2 {
-                Write-Blue "Using Clang on Linux"
+                Write-Host -ForegroundColor Blue "Using Clang on Linux"
                 clang++ -std=c++20 $OOption $WallOption -iquote -I"/usr/lib/clang/10/include" -o 'output/app' "./src/main.cpp" -g
             }
             default {
-                Write-Blue "$Compiler is not supported"
+                Write-Host -ForegroundColor Blue "$Compiler is not supported"
             }
         }
     } elseif ($IsMacOS) {
-        Write-Red "Mac OS is not supported"
+        Write-Host -ForegroundColor Red "Mac OS is not supported"
         exit
     } else {
-        Write-Red "Could not determine OS, thus no compilation was done"
+        Write-Host -ForegroundColor Red "Could not determine OS, thus no compilation was done"
     }
     $CompilerTimer.Stop()
     $CompileTime = $CompilerTimer.Elapsed
-    Write-Cyan "Compile took $CompileTime"
+    Write-Host -ForegroundColor Cyan "Compile took $CompileTime"
 
     $CompileOut = $LASTEXITCODE
     if($CompileOut -ne 0) {
-        Write-Red "exited with error code $CompileOut"
+        Write-Host -ForegroundColor Red "exited with error code $CompileOut"
     } else {
-        Write-Cyan "Compile completed succesfully"
+        Write-Host -ForegroundColor Cyan "Compile completed succesfully"
     }
-    Write-White ""
+    Write-Host -ForegroundColor White ""
     Set-Location $LocationPath
 }
 
 try {
     Compile
 } catch {
-    Write-Cyan "An error occured"
-    Write-Red $Error
+    Write-Host -ForegroundColor Cyan "An error occured"
+    Write-Host -ForegroundColor Red $Error
     $Error.Clear()
     Set-Location $LocationPath
 }
