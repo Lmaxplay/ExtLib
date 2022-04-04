@@ -22,11 +22,16 @@ int main() {
 
     std::atexit(ansi::resetconsole);
 
-    ansi::setForeground(213);
+    unsigned char i;
 
-    double6 thing = double5(102, 305, 507, 231, 694);
-
-    std::cout << "thing: (" << thing << ")" << std::endl;
+    while(i <= 255) {
+        ansi::setForeground(i);
+        std::cout << (short int)i << " ";
+        i++;
+        if(i == 0) {
+            break;
+        }
+    }
 
     return 0;
 
