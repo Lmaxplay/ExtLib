@@ -407,12 +407,12 @@ struct Vec5 {
     T y;
     T z;
     T w;
-    T t;
+    T v;
     
-    inline const Vec5<T> operator + (Vec5<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w, t + other.t }; };
-    inline const Vec5<T> operator - (Vec5<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w, t - other.t }; };
-    inline const Vec5<T> operator * (Vec5<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w, t * other.t }; };
-    inline const Vec5<T> operator / (Vec5<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w, t / other.t }; };
+    inline const Vec5<T> operator + (Vec5<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w, v + other.v }; };
+    inline const Vec5<T> operator - (Vec5<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w, v - other.v }; };
+    inline const Vec5<T> operator * (Vec5<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w, v * other.v }; };
+    inline const Vec5<T> operator / (Vec5<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w, v / other.v }; };
 
     inline T& operator [] (int index) {
         switch(index) {
@@ -429,7 +429,7 @@ struct Vec5 {
             return w;
 
             case 4:
-            return t;
+            return v;
 
             default:
             throw std::out_of_range("Out of range item");
@@ -439,7 +439,7 @@ struct Vec5 {
 
     inline friend std::ostream& operator<<(std::ostream& os, const Vec5<T>& vec)
     {
-        os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ", " << vec.t;
+        os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ", " << vec.v;
         return os;
     }
 
@@ -450,15 +450,15 @@ struct Vec5 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
-        this->t = (T)other.t;
+        this->v = (T)other.v;
     }; 
     
-    inline Vec5(const T x, const T y, const T z, const T w, const T t) {
+    inline Vec5(const T x, const T y, const T z, const T w, const T v) {
         this->x = x;
         this->y = y;
         this->z = z;
         this->w = w;
-        this->t = t;
+        this->v = v;
         return;
     }
 
@@ -475,7 +475,7 @@ struct Vec5 {
         this->y = y;
         this->z = z;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         return;
     }
 
@@ -485,7 +485,7 @@ struct Vec5 {
         this->y = y;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         return;
     }
 
@@ -502,7 +502,7 @@ struct Vec5 {
         this->y = (T)0;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         return;
     }
 
@@ -512,7 +512,7 @@ struct Vec5 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
-        this->t = (T)0;
+        this->v = (T)0;
     };
 
     template <typename T2>
@@ -521,7 +521,7 @@ struct Vec5 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
     };
 
     template <typename T2>
@@ -530,38 +530,38 @@ struct Vec5 {
         this->y = (T)other.y;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
     };
 
     // Returns the dot product of two vectors
     inline T dot(const Vec5<T> &other) {
-        return x * other.x + y * other.y + z * other.z + w * other.w + t * other.t;
+        return x * other.x + y * other.y + z * other.z + w * other.w + v * other.v;
     }
 
     // Returns the cross product of two vectors
     inline Vec5<T> cross(const Vec5<T> &other) {
-        return {y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, w * other.w, t * other.t};
+        return {y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, w * other.w, v * other.v};
     }
     
     // Returns the magnitude of the vector
     inline T magnitude() {
-        return std::sqrt(x * x + y * y + z * z + w * w + t * t);
+        return std::sqrt(x * x + y * y + z * z + w * w + v * v);
     }
     
     // Returns the normalized vector
     inline Vec5<T> normalize() {
         T mag = magnitude();
-        return {x / mag, y / mag, z / mag, w / mag, t / mag};
+        return {x / mag, y / mag, z / mag, w / mag, v / mag};
     }
 
     // Returns the length of the vector
     inline T length() {
-        return std::sqrt(x * x + y * y + z * z + w * w + t * t);
+        return std::sqrt(x * x + y * y + z * z + w * w + v * v);
     }
 
     // Returns the distance between two vectors
     inline T distance(const Vec5<T> &other) {
-        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2) + std::pow(z - other.z, 2) + std::pow(w - other.w, 2) + std::pow(t - other.t, 2));
+        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2) + std::pow(z - other.z, 2) + std::pow(w - other.w, 2) + std::pow(v - other.v, 2));
     }
 
     // Returns the angle between two vectors
@@ -586,13 +586,13 @@ struct Vec6 {
     T y;
     T z;
     T w;
-    T t;
+    T v;
     T u;
     
-    inline const Vec6<T> operator + (Vec6<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w, t + other.t, u + other.u }; };
-    inline const Vec6<T> operator - (Vec6<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w, t - other.t, u - other.u }; };
-    inline const Vec6<T> operator * (Vec6<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w, t * other.t, u * other.u }; };
-    inline const Vec6<T> operator / (Vec6<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w, t / other.t, u / other.u }; };
+    inline const Vec6<T> operator + (Vec6<T> other) { return {x + other.x, y + other.y, z + other.z, w + other.w, v + other.v, u + other.u }; };
+    inline const Vec6<T> operator - (Vec6<T> other) { return {x - other.x, y - other.y, z - other.z, w - other.w, v - other.v, u - other.u }; };
+    inline const Vec6<T> operator * (Vec6<T> other) { return {x * other.x, y * other.y, z * other.z, w * other.w, v * other.v, u * other.u }; };
+    inline const Vec6<T> operator / (Vec6<T> other) { return {x / other.x, y / other.y, z / other.z, w / other.w, v / other.v, u / other.u }; };
 
     inline T& operator [] (int index) {
         switch(index) {
@@ -609,7 +609,7 @@ struct Vec6 {
             return w;
 
             case 4:
-            return t;
+            return v;
 
             case 5:
             return u;
@@ -622,7 +622,7 @@ struct Vec6 {
 
     inline friend std::ostream& operator<<(std::ostream& os, const Vec6<T>& vec)
     {
-        os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ", " << vec.t << ", " << vec.u;
+        os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w << ", " << vec.v << ", " << vec.u;
         return os;
     }
 
@@ -633,26 +633,26 @@ struct Vec6 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
-        this->t = (T)other.t;
+        this->v = (T)other.v;
         this->u = (T)other.u;
     }; 
     
-    inline Vec6(const T x, const T y, const T z, const T w, const T t, const T u) {
+    inline Vec6(const T x, const T y, const T z, const T w, const T v, const T u) {
         this->x = x;
         this->y = y;
         this->z = z;
         this->w = w;
-        this->t = t;
+        this->v = v;
         this->u = u;
         return;
     }
 
-    inline Vec6(const T x, const T y, const T z, const T w, const T t) {
+    inline Vec6(const T x, const T y, const T z, const T w, const T v) {
         this->x = x;
         this->y = y;
         this->z = z;
         this->w = w;
-        this->t = t;
+        this->v = v;
         this->u = (T)0;
         return;
     }
@@ -662,7 +662,7 @@ struct Vec6 {
         this->y = y;
         this->z = z;
         this->w = w;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
         return;
     }
@@ -672,7 +672,7 @@ struct Vec6 {
         this->y = y;
         this->z = z;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
         return;
     }
@@ -683,7 +683,7 @@ struct Vec6 {
         this->y = y;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
         return;
     }
@@ -693,7 +693,7 @@ struct Vec6 {
         this->y = (T)0;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
         return;
     }
@@ -703,7 +703,7 @@ struct Vec6 {
         this->y = (T)0;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
         return;
     }
@@ -714,7 +714,7 @@ struct Vec6 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
-        this->t = (T)other.t;
+        this->v = (T)other.v;
         this->u = (T)0;
     };
 
@@ -724,7 +724,7 @@ struct Vec6 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)other.w;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
     };
 
@@ -734,7 +734,7 @@ struct Vec6 {
         this->y = (T)other.y;
         this->z = (T)other.z;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
     };
 
@@ -744,39 +744,39 @@ struct Vec6 {
         this->y = (T)other.y;
         this->z = (T)0;
         this->w = (T)0;
-        this->t = (T)0;
+        this->v = (T)0;
         this->u = (T)0;
     };
 
     // Returns the dot product of two vectors
     inline T dot(const Vec6<T> &other) {
-        return x * other.x + y * other.y + z * other.z + w * other.w + t * other.t + u * other.u;
+        return x * other.x + y * other.y + z * other.z + w * other.w + v * other.v + u * other.u;
     }
 
     // Returns the cross product of two vectors
     inline Vec6<T> cross(const Vec6<T> &other) {
-        return {y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, w * other.w, t * other.t, u * other.u};
+        return {y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, w * other.w, v * other.v, u * other.u};
     }
     
     // Returns the magnitude of the vector
     inline T magnitude() {
-        return std::sqrt(x * x + y * y + z * z + w * w + t * t + u * u);
+        return std::sqrt(x * x + y * y + z * z + w * w + v * v + u * u);
     }
     
     // Returns the normalized vector
     inline Vec6<T> normalize() {
         T mag = magnitude();
-        return {x / mag, y / mag, z / mag, w / mag, t / mag, u / mag};
+        return {x / mag, y / mag, z / mag, w / mag, v / mag, u / mag};
     }
 
     // Returns the length of the vector
     inline T length() {
-        return std::sqrt(x * x + y * y + z * z + w * w + t * t + u * u);
+        return std::sqrt(x * x + y * y + z * z + w * w + v * v + u * u);
     }
 
     // Returns the distance between two vectors
     inline T distance(const Vec6<T> &other) {
-        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2) + std::pow(z - other.z, 2) + std::pow(w - other.w, 2) + std::pow(t - other.t, 2) + std::pow(u - other.u, 2));
+        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2) + std::pow(z - other.z, 2) + std::pow(w - other.w, 2) + std::pow(v - other.v, 2) + std::pow(u - other.u, 2));
     }
 
     // Returns the angle between two vectors

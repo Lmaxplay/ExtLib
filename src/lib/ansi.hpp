@@ -233,6 +233,136 @@ namespace ansi {
     const std::wstring ws_clearline           = std::wstring(L"\033[2K");
     const std::wstring ws_clear               = std::wstring(L"\033c");
 
+    namespace color {
+
+        const char* black = "\033[30m";
+        const char* red = "\033[31m";
+        const char* green = "\033[32m";
+        const char* yellow = "\033[33m";
+        const char* blue = "\033[34m";
+        const char* magenta = "\033[35m";
+        const char* cyan = "\033[36m";
+        const char* white = "\033[37m";
+
+        const wchar_t* w_black = L"\033[30m";
+        const wchar_t* w_red = L"\033[31m";
+        const wchar_t* w_green = L"\033[32m";
+        const wchar_t* w_yellow = L"\033[33m";
+        const wchar_t* w_blue = L"\033[34m";
+        const wchar_t* w_magenta = L"\033[35m";
+        const wchar_t* w_cyan = L"\033[36m";
+        const wchar_t* w_white = L"\033[37m";
+
+        const std::string s_black = "\033[30m";
+        const std::string s_red = "\033[31m";
+        const std::string s_green = "\033[32m";
+        const std::string s_yellow = "\033[33m";
+        const std::string s_blue = "\033[34m";
+        const std::string s_magenta = "\033[35m";
+        const std::string s_cyan = "\033[36m";
+        const std::string s_white = "\033[37m";
+
+        const std::wstring ws_black = L"\033[30m";
+        const std::wstring ws_red = L"\033[31m";
+        const std::wstring ws_green = L"\033[32m";
+        const std::wstring ws_yellow = L"\033[33m";
+        const std::wstring ws_blue = L"\033[34m";
+        const std::wstring ws_magenta = L"\033[35m";
+        const std::wstring ws_cyan = L"\033[36m";
+        const std::wstring ws_white = L"\033[37m";
+
+    }
+
+    namespace foreground {
+
+        const char* black = "\033[30m";
+        const char* red = "\033[31m";
+        const char* green = "\033[32m";
+        const char* yellow = "\033[33m";
+        const char* blue = "\033[34m";
+        const char* magenta = "\033[35m";
+        const char* cyan = "\033[36m";
+        const char* white = "\033[37m";
+
+        const wchar_t* w_black = L"\033[30m";
+        const wchar_t* w_red = L"\033[31m";
+        const wchar_t* w_green = L"\033[32m";
+        const wchar_t* w_yellow = L"\033[33m";
+        const wchar_t* w_blue = L"\033[34m";
+        const wchar_t* w_magenta = L"\033[35m";
+        const wchar_t* w_cyan = L"\033[36m";
+        const wchar_t* w_white = L"\033[37m";
+
+        const std::string s_black = "\033[30m";
+        const std::string s_red = "\033[31m";
+        const std::string s_green = "\033[32m";
+        const std::string s_yellow = "\033[33m";
+        const std::string s_blue = "\033[34m";
+        const std::string s_magenta = "\033[35m";
+        const std::string s_cyan = "\033[36m";
+        const std::string s_white = "\033[37m";
+
+        const std::wstring ws_black = L"\033[30m";
+        const std::wstring ws_red = L"\033[31m";
+        const std::wstring ws_green = L"\033[32m";
+        const std::wstring ws_yellow = L"\033[33m";
+        const std::wstring ws_blue = L"\033[34m";
+        const std::wstring ws_magenta = L"\033[35m";
+        const std::wstring ws_cyan = L"\033[36m";
+        const std::wstring ws_white = L"\033[37m";
+
+        void hex256(short int color) {
+            if (color < 0) {
+                color = 0;
+            }
+            if (color > 255) {
+                color = 255;
+            }
+            std::cout << "\033[38;5;" << color << "m";
+        }
+
+    }
+
+    namespace background {
+    
+        const char* black = "\033[40m";
+        const char* red = "\033[41m";
+        const char* green = "\033[42m";
+        const char* yellow = "\033[43m";
+        const char* blue = "\033[44m";
+        const char* magenta = "\033[45m";
+        const char* cyan = "\033[46m";
+        const char* white = "\033[47m";
+
+        const wchar_t* w_black = L"\033[40m";
+        const wchar_t* w_red = L"\033[41m";
+        const wchar_t* w_green = L"\033[42m";
+        const wchar_t* w_yellow = L"\033[43m";
+        const wchar_t* w_blue = L"\033[44m";
+        const wchar_t* w_magenta = L"\033[45m";
+        const wchar_t* w_cyan = L"\033[46m";
+        const wchar_t* w_white = L"\033[47m";
+
+        const std::string s_black = "\033[40m";
+        const std::string s_red = "\033[41m";
+        const std::string s_green = "\033[42m";
+        const std::string s_yellow = "\033[43m";
+        const std::string s_blue = "\033[44m";
+        const std::string s_magenta = "\033[45m";
+        const std::string s_cyan = "\033[46m";
+        const std::string s_white = "\033[47m";
+
+        const std::wstring ws_black = L"\033[40m";
+        const std::wstring ws_red = L"\033[41m";
+        const std::wstring ws_green = L"\033[42m";
+        const std::wstring ws_yellow = L"\033[43m";
+        const std::wstring ws_blue = L"\033[44m";
+        const std::wstring ws_magenta = L"\033[45m";
+        const std::wstring ws_cyan = L"\033[46m";
+        const std::wstring ws_white = L"\033[47m";
+
+    }
+
     // Resets the console
     void resetconsole() {
         std::cout << ansi::reset;
@@ -246,6 +376,22 @@ namespace ansi {
     void registeratexit() {
         // Reset the console when exiting
         std::atexit(resetconsole);
+    }
+
+    void setcolor(char color) {
+        std::cout << color;
+    }
+
+    void setcolor(wchar_t color) {
+        std::wcout << color;
+    }
+
+    void setcolor(std::string color) {
+        std::cout << color;
+    }
+
+    void setcolor(std::wstring color) {
+        std::wcout << color;
     }
 }
 
